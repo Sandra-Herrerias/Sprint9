@@ -1,0 +1,12 @@
+<p>products works!</p>
+
+<div *ngIf="products">
+    <div class="my-3" *ngFor="let product of products; let i = index">
+        <div class="card text-white bg-dark" (click)="getProdDetail(product)">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
