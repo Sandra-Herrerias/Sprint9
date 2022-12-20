@@ -1,8 +1,9 @@
 <p>products works!</p>
 
-<div *ngIf="products">
+<div *ngIf="products" class="d-flex">
     <div class="my-3" *ngFor="let product of products; let i = index">
         <div class="card text-white bg-dark" (click)="getProdDetail(product)">
+            <img src="{{ product.images[0] }}" class="card-img-top" alt="imgProduct">
             <div class="card-body">
                 <h5 class="card-title">{{ product.title }}</h5>
                 <p class="card-text">{{ product.description }}</p>
