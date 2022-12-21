@@ -10,9 +10,13 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements OnInit{
 
   products:Array<any>=[];
-
+  ipp!: number;
+  cp!: number;
   constructor(private prodService: ProductsService,
-    private router:Router) { }
+    private router:Router) { 
+      this.ipp = 10;
+      this.cp = 1;
+    }
 
     ngOnInit(){
       this.listProducts();
@@ -27,5 +31,4 @@ export class ProductsComponent implements OnInit{
     getProdDetail(e:any){
       this.router.navigate(['/prodDetail']);
     }
-
 }

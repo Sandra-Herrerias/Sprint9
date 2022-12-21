@@ -11,4 +11,7 @@ export class ProductsService {
   getListProducts(){
     return this.http.get('https://api.escuelajs.co/api/v1/products');
   }
+
+
+
 }
