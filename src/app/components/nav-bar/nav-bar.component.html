@@ -10,6 +10,11 @@
                 <li class="nav-item"><a class="nav-link" routerLink="products">PRODUCTS</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="categories">CATEGORIES</a></li>
             </ul>
+            <div class="d-flex">
+                <a *ngIf="loggedIn == null" class="fontBorder reg" routerLink="login">LOG IN </a>
+                <a *ngIf="loggedIn" class="fontBorder" (click)="logout()">LOG OUT</a> //
+                <a class="fontBorder " routerLink="register">SIGN IN</a>
+            </div>
         </div>
     </div>
 </nav>
