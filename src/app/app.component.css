@@ -1,0 +1,10 @@
+#container {
+    min-height: 100%;
+    position: relative;
+}
+
+#content-wrap {
+    padding: 10px;
+    padding-bottom: 60px;
+    /* Height of the footer */
+}
