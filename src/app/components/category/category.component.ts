@@ -13,7 +13,9 @@ export class CategoryComponent implements OnInit{
   products!:any;
   ipp!: number;
   cp!: number;
-  constructor(private catService: CategoriesService,
+
+  constructor(
+    private catService: CategoriesService,
     private route: ActivatedRoute) {
       this.ipp = 10;
       this.cp = 1;
@@ -21,18 +23,9 @@ export class CategoryComponent implements OnInit{
 
   ngOnInit():void{
     this.route.queryParams.subscribe(params => {
-     
       this.categoryId = params['id']; 
-      console.log(this.categoryId);
-    
     });
-
-    this.printId();
     this.getProductsByCategory();
-  }
-
-  printId(){
-    console.log("PRINT" + this.categoryId);
   }
 
   getProductsByCategory(){
@@ -40,7 +33,5 @@ export class CategoryComponent implements OnInit{
    .subscribe((data:any) =>{
       this.products = data;
    });
-    console.log(this.products);
   }
-
 }

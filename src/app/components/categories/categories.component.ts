@@ -11,7 +11,6 @@ export class CategoriesComponent {
 
   categories: Array<any> = [];
  
-
   ipp!: number;
   cp!: number;
   constructor(private router: Router,
@@ -20,29 +19,20 @@ export class CategoriesComponent {
     this.cp = 1;
   }
 
-
   ngOnInit(): void {
     this.listCategories();
-    this.getCategoriesNames();
   }
 
   listCategories() {
     this.catService.getListCategories().subscribe((data: any) => {
       this.categories = data;
-      console.log(this.categories);
     });
 
     return this.categories;
   }
 
-  getCategoriesNames() {
-
-    console.log("NAMES: " + this.categories);
-
-  }
 
   getCategory(e: any) {
-    console.log(e.id);
     this.router.navigate(['/category'], {queryParams: {id: e.id}});
   }
 }

@@ -11,13 +11,12 @@ import { UsersService } from 'src/app/services/users.service';
 export class NavBarComponent implements OnInit{
 
   loggedIn!: User | null;
-  constructor(public router: Router, 
+  constructor(
+    public router: Router, 
     private userService: UsersService) { }
-
 
     ngOnInit(): void {
       this.userService.user.subscribe((result: User) => {
-        console.log(result); 
        if (result) {
          this.loggedIn = {
            firstName: result.firstName, 
