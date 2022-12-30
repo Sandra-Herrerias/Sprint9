@@ -32,4 +32,8 @@ export class NavBarComponent implements OnInit{
     logout(): void {
       this.userService.logout();
     }
+
+    getProducts() {
+      this.router.navigate(['/category']);
+    }
 }

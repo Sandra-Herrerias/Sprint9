@@ -33,6 +33,6 @@ export class CategoriesComponent {
 
 
   getCategory(e: any) {
-    this.router.navigate(['/category'], {queryParams: {id: e.id}});
+    this.router.navigate(['/category'], {queryParams: {id: e.id, byCategory: true}});
   }
 }

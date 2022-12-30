@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-category',
@@ -13,9 +14,12 @@ export class CategoryComponent implements OnInit{
   products!:any;
   ipp!: number;
   cp!: number;
+  showByCategory!:boolean;
+
 
   constructor(
     private catService: CategoriesService,
+    private prodService: ProductsService,
     private route: ActivatedRoute) {
       this.ipp = 10;
       this.cp = 1;
@@ -24,8 +28,17 @@ export class CategoryComponent implements OnInit{
   ngOnInit():void{
     this.route.queryParams.subscribe(params => {
       this.categoryId = params['id']; 
+      this.showByCategory = params['byCategory']; 
+      console.log(this.showByCategory);
     });
-    this.getProductsByCategory();
+
+    if(this.showByCategory){
+      this.getProductsByCategory();
+    }else{
+      this.listProducts();
+    }
+   
+    
   }
 
   getProductsByCategory(){
@@ -34,4 +47,13 @@ export class CategoryComponent implements OnInit{
       this.products = data;
    });
   }
+
+  
+  listProducts():void{
+    this.prodService.getListProducts()
+    .subscribe((data:any) => {
+      this.products = data;
+    });
+  }
+
 }
