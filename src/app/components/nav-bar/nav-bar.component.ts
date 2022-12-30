@@ -34,6 +34,6 @@ export class NavBarComponent implements OnInit{
     }
 
     getProducts() {
-      this.router.navigate(['/category']);
+      this.router.navigate(['/products']);
     }
 }

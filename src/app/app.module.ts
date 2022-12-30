@@ -7,14 +7,13 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { HomeComponent } from './components/home/home.component';
-import { CategoryComponent } from './components/category/category.component';
-import { ProductsComponent } from './components/products/products.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +21,11 @@ import { FooterComponent } from './components/footer/footer.component';
     NavBarComponent,
     CategoriesComponent,
     HomeComponent,
-    CategoryComponent,
-    ProductsComponent,
     LoginComponent,
     RegisterComponent,
     OrdersComponent,
-    FooterComponent
+    FooterComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
