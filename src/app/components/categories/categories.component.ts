@@ -10,7 +10,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 export class CategoriesComponent {
 
   categories: Array<any> = [];
-  category!: string;
+ 
 
   ipp!: number;
   cp!: number;
@@ -42,7 +42,7 @@ export class CategoriesComponent {
   }
 
   getCategory(e: any) {
-    console.log(e);
-    this.router.navigate(['/category']);
+    console.log(e.id);
+    this.router.navigate(['/category'], {queryParams: {id: e.id}});
   }
 }
