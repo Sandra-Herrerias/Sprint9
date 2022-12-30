@@ -1,13 +1,14 @@
-<div class="container">
-
-    <table class="table table-bordered">
-        <tr>
-            <th>name</th>
-
-        </tr>
-
-        <tr>{{ paramsRoute }}</tr>
-
-
-    </table>
+<div *ngIf="products" class="d-flex">
+    <div class="my-3" *ngFor="let product of products | paginate: {itemsPerPage: ipp, currentPage: cp};  let i = index">
+        <div class="card text-white bg-dark">
+            <img src="{{ product.images[0] }} " class="card-img-top " alt="imgProduct ">
+            <div class="card-body ">
+                <h5 class="card-title ">{{ product.title }}</h5>
+                <p class="card-text ">{{ product.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center ">
+    <pagination-controls (pageChange)="cp=$event "></pagination-controls>
 </div>
