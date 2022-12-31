@@ -10,11 +10,12 @@ import { HomeComponent } from './components/home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { OrdersComponent } from './components/orders/orders.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { AdminSectionComponent } from './components/admin-section/admin-section.component';
+import { UserSectionComponent } from './components/user-section/user-section.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,11 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    OrdersComponent,
     FooterComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AdminSectionComponent,
+    UserSectionComponent
   ],
   imports: [
     BrowserModule,

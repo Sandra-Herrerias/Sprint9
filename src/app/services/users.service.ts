@@ -32,7 +32,7 @@ export class UsersService {
     if (typeof userFound !== "undefined") {
       localStorage.setItem('currentUser', JSON.stringify(userFound));
       this.userSubject.next(userFound);
-      this.route.navigate(['/orders']);
+      this.route.navigate(['/adminSection']);
 
     } else {
       alert("Wrong credentials");
