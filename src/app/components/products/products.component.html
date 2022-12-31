@@ -1,10 +1,12 @@
 <div *ngIf="products" class="d-flex">
     <div class="my-3" *ngFor="let product of products | paginate: {itemsPerPage: ipp, currentPage: cp};  let i = index">
-        <div class="card text-white bg-dark" (click)="getProdDetail(product)">
+        <div class="card text-white bg-dark">
             <img src="{{ product.images[0] }} " class="card-img-top " alt="imgProduct ">
             <div class="card-body ">
-                <h5 class="card-title ">{{ product.title }}</h5>
-                <p class="card-text ">{{ product.description }}</p>
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <button class="btn btn-secondary">Add to Cart</button>
+                <button class="btn btn-secondary" (click)="getProdDetail(product)">View Detail</button>
             </div>
         </div>
     </div>

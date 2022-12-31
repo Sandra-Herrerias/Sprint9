@@ -7,3 +7,11 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.card-text {
+    font-size: small;
+}
+
+button {
+    margin-right: 1rem;
+}
