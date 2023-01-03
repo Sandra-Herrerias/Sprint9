@@ -10,7 +10,9 @@ import { ProductsService } from 'src/app/services/products.service';
 export class AdminSectionComponent implements OnInit {
 
   newProduct!: Product;
-  products!:Product[];
+  products!: Product[];
+  prodSelected!:any;
+  showForm:boolean = false;
 
   constructor(
     private prodService: ProductsService) { }
@@ -46,16 +48,21 @@ export class AdminSectionComponent implements OnInit {
     }
   }
 
-    
-  listProducts():void{
+  listProducts(): void {
+    this.showForm = false;
+
     this.prodService.getListProducts()
-    .subscribe((data:any) => {
-      this.products = data;
-      console.log(this.products );
-    });
+      .subscribe((data: any) => {
+        this.products = data;
+        console.log(this.products);
+      });
   }
 
-  updateProduct(event:any){
+  updateProduct(event: any) {
     console.log(event);
+    this.prodSelected = event;
+    console.log("TEST" + JSON.stringify(this.prodSelected));
+    this.showForm = true;
+    return this.prodSelected;
   }
 }

@@ -1,6 +1,6 @@
 <button class="btn btn-danger" (click)="addNewProduct()">ADD</button>
 
-<div *ngIf=products>
+<div *ngIf="products && !showForm">
     <table class="table">
         <thead>
             <tr>
@@ -27,4 +27,9 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+
+<div *ngIf="prodSelected && showForm">
+    <app-product-form [productInForm]="prodSelected"></app-product-form>
 </div>
