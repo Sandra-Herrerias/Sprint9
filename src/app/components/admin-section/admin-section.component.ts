@@ -15,29 +15,25 @@ export class AdminSectionComponent implements OnInit {
     private prodService: ProductsService) { }
 
   ngOnInit(): void {
-    const obj1: Product = {}; //new Product
-
-    this.newProduct = obj1;
-
 
   }
 
   addNewProduct() {
     let info = {
       title: "New Product",
-      price: 10,
-      description: "A description",
-      categoryId: 9846,
+      price: 89485,
+      description: "test",
+      categoryId: 2,
       images: ["https://placeimg.com/640/480/any"]
     }
-
+    this.newProduct = info;
     console.log(info);
 
     if (this.newProduct) {
       this.prodService.addProduct(info).subscribe(
         (result: any) => {
           console.log(result);
-          if (result.success) {//success message
+          if (result) {//success message
             alert("Producto insertado correctamente");
           } else {//error message
             alert("El producto no se ha podido añadir");
