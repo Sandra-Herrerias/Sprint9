@@ -37,8 +37,6 @@ export class ProductsComponent implements OnInit{
     }else{
       this.listProducts();
     }
-   
-    
   }
 
   getProductsByCategory(){

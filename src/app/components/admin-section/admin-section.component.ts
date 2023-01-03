@@ -10,12 +10,13 @@ import { ProductsService } from 'src/app/services/products.service';
 export class AdminSectionComponent implements OnInit {
 
   newProduct!: Product;
+  products!:Product[];
 
   constructor(
     private prodService: ProductsService) { }
 
   ngOnInit(): void {
-
+    this.listProducts();
   }
 
   addNewProduct() {
@@ -43,5 +44,18 @@ export class AdminSectionComponent implements OnInit {
     } else {//error message
       alert("El producto no puede estar vacío");
     }
+  }
+
+    
+  listProducts():void{
+    this.prodService.getListProducts()
+    .subscribe((data:any) => {
+      this.products = data;
+      console.log(this.products );
+    });
+  }
+
+  updateProduct(event:any){
+    console.log(event);
   }
 }

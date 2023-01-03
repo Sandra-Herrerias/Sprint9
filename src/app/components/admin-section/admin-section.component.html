@@ -1,3 +1,30 @@
-<p>admin-section works!</p>
-
 <button class="btn btn-danger" (click)="addNewProduct()">ADD</button>
+
+<div *ngIf=products>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">title</th>
+                <th scope="col">price</th>
+                <th scope="col">description</th>
+                <th scope="col">categoryId</th>
+                <th scope="col">images</th>
+                <th scope="col">update</th>
+                <th scope="col">delete</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of products;let i=index">
+            <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{product.title}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.categoryId}}</td>
+                <td>{{product.images}}</td>
+                <td><button class="btn btn-success" (click)="updateProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button></td>
+                <td><button class="btn btn-danger" (click)="addNewProduct()"><i class="fa-solid fa-trash-can"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
