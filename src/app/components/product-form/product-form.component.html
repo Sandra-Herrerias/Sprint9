@@ -2,19 +2,19 @@
 <p>{{productInForm | json}}</p>
 
 <div class="container">
-    <form [formGroup]="prodForm" (ngSubmit)="registerFormSubmit(prodForm.value)">
+    <form [formGroup]="prodForm" (ngSubmit)="updateFormSubmit(prodForm.value)">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" formControlTitle="title" id="title" class="form-control" value={{this.productInForm.title}} required [ngClass]="{ 'is-invalid': f['title'].touched && f['title'].errors, 'is-valid': f['title'].valid }">
+                    <input type="text" formControlName="title" id="title" class="form-control" value={{this.productInForm.title}} required [ngClass]="{ 'is-invalid': f['title'].touched && f['title'].errors, 'is-valid': f['title'].valid }">
                     <div *ngIf="f['title'].touched && f['title'].errors" class="invalid-feedback">
                         <div *ngIf="f['title'].errors['required']">Title is required!</div>
                     </div>
                 </div>
             </div>
         </div>
-
+        {{this.prodUpdated.title}}
         <div class="row">
             <div class="form-group">
                 <button type="submit" class="btn btn-primary"> Register </button>
