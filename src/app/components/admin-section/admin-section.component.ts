@@ -49,13 +49,17 @@ export class AdminSectionComponent implements OnInit {
   }
 
   listProducts(): void {
-    this.showForm = false;
 
-    this.prodService.getListProducts()
+    if(!this.showForm){
+
+   this.prodService.getListProducts()
       .subscribe((data: any) => {
         this.products = data;
         console.log(this.products);
       });
+    }
+
+ 
   }
 
   updateProduct(event: any) {
@@ -64,5 +68,14 @@ export class AdminSectionComponent implements OnInit {
     console.log("TEST" + JSON.stringify(this.prodSelected));
     this.showForm = true;
     return this.prodSelected;
+  }
+
+  /**
+   * Show products list updated
+   * @param e 
+   */
+  showProducts(noShowForm:boolean){
+    this.showForm = noShowForm;
+    this.listProducts();
   }
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -11,9 +10,10 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductFormComponent implements OnInit {
 
   @Input() productInForm!: any;
+  @Output() goToProductsList = new EventEmitter<boolean>();
 
   prodForm!: FormGroup;
-  prodUpdated!: any;
+  showProdForm: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,43 +28,43 @@ export class ProductFormComponent implements OnInit {
 
     this.prodForm = this.formBuilder.group({
       id: this.productInForm.id,
-      title: this.productInForm.title
+      title: this.productInForm.title,
+      price: this.productInForm.price,
+      description: this.productInForm.description
     });
 
     console.log(this.prodForm.controls );
-   
-    const obj1: any = {
-      id: this.productInForm.id,
-      title: this.productInForm.title
-    }; //new Product
-
-    this.prodUpdated = obj1;
   }
 
   get f() { return this.prodForm.controls; }
 
   updateFormSubmit(value: any) {
-    console.log(value.title);
-    // let info = {
-    //   "id": this.productInForm.id,
-    //   "title":  this.prodForm
-    // }
-    // console.log(info);
-    // if (this.prodUpdated) {
-    //   this.prodService.modifyProduct(info).subscribe(
-    //     (result: any) => {
-    //       let res = JSON.parse(JSON.stringify(result));
-    //       console.log(res);
-    //       console.log(result);
-    //       if (result) { //success message
-    //         alert("Comentario modificado correctamente");
-    //       } else {//error message
-    //         alert("El comentario no se ha podido modificar");
-    //       }
-    //     }
-    //   );
-    // } else {//error message
-    //   alert("El comentario no puede estar vacío");
-    // }
+    let info = {
+      "id": value.id,
+      "title":  value.title,
+      "price": value.price,
+      "description": value.description
+    }
+    console.log(info);
+    if (info) {
+      this.prodService.modifyProduct(info).subscribe(
+        (result: any) => {
+          let res = JSON.parse(JSON.stringify(result));
+          console.log(res);
+          console.log(result);
+          if (result) { //success message
+            alert("Comentario modificado correctamente");
+          } else {//error message
+            alert("El comentario no se ha podido modificar");
+          }
+        }
+      );
+    } else {//error message
+      alert("El comentario no puede estar vacío");
+    }
+  }
+
+  goBack(){
+    this.goToProductsList.emit(this.showProdForm);
   }
 }

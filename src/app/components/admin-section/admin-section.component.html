@@ -31,5 +31,5 @@
 
 
 <div *ngIf="prodSelected && showForm">
-    <app-product-form [productInForm]="prodSelected"></app-product-form>
+    <app-product-form [productInForm]="prodSelected" (goToProductsList)="showProducts($event)"></app-product-form>
 </div>
