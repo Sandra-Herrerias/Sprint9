@@ -37,9 +37,11 @@ export class ProductFormComponent implements OnInit {
       category: this.productInForm.category.name
     });
 
-    console.log(this.prodForm.controls );
-    console.log(this.categories );
+    console.log(this.prodForm.controls);
+    console.log(this.categories);
+
   }
+
 
   get f() { return this.prodForm.controls; }
 
@@ -51,7 +53,8 @@ export class ProductFormComponent implements OnInit {
       "description": value.description,
       "category": value.category.name
     }
-    console.log(info);
+    //TODO no esta arribant el valor de category
+    console.log("INFOOOO" + JSON.stringify(info));
     if (info) {
       this.prodService.modifyProduct(info).subscribe(
         (result: any) => {
