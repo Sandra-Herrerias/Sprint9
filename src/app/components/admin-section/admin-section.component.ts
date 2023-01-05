@@ -11,8 +11,10 @@ export class AdminSectionComponent implements OnInit {
 
   newProduct!: Product;
   products!: Product[];
-  prodSelected!:any;
-  showForm:boolean = false;
+  prodSelected!: any;
+  showForm: boolean = false;
+  allCategories: Array<any> = [];
+  categories: Array<any> = [];
 
   constructor(
     private prodService: ProductsService) { }
@@ -26,7 +28,9 @@ export class AdminSectionComponent implements OnInit {
       title: "New Product",
       price: 89485,
       description: "test",
-      categoryId: 2,
+      category: {
+        id: 2
+      },
       images: ["https://placeimg.com/640/480/any"]
     }
     this.newProduct = info;
@@ -50,16 +54,23 @@ export class AdminSectionComponent implements OnInit {
 
   listProducts(): void {
 
-    if(!this.showForm){
+    if (!this.showForm) {
 
-   this.prodService.getListProducts()
-      .subscribe((data: any) => {
-        this.products = data;
-        console.log(this.products);
-      });
+      this.prodService.getListProducts()
+        .subscribe((data: any) => {
+          this.products = data;
+
+          //Get All categories
+          this.products.forEach(item => {
+            return this.allCategories.push(item.category.name);
+          });
+
+          //Delete duplicate categories and remain the differrent kind of each one
+          this.categories = this.allCategories.filter(function (elem, index, self) {
+            return index === self.indexOf(elem);
+          });
+        });
     }
-
- 
   }
 
   updateProduct(event: any) {
@@ -74,7 +85,7 @@ export class AdminSectionComponent implements OnInit {
    * Show products list updated
    * @param e 
    */
-  showProducts(noShowForm:boolean){
+  showProducts(noShowForm: boolean) {
     this.showForm = noShowForm;
     this.listProducts();
   }

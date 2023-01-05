@@ -8,7 +8,7 @@
                 <th scope="col">title</th>
                 <th scope="col">price</th>
                 <th scope="col">description</th>
-                <th scope="col">categoryId</th>
+                <th scope="col">category</th>
                 <th scope="col">images</th>
                 <th scope="col">update</th>
                 <th scope="col">delete</th>
@@ -20,7 +20,7 @@
                 <td>{{product.title}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.categoryId}}</td>
+                <td>{{product.category.name}}</td>
                 <td>{{product.images}}</td>
                 <td><button class="btn btn-success" (click)="updateProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button></td>
                 <td><button class="btn btn-danger" (click)="addNewProduct()"><i class="fa-solid fa-trash-can"></i></button></td>
@@ -31,5 +31,6 @@
 
 
 <div *ngIf="prodSelected && showForm">
-    <app-product-form [productInForm]="prodSelected" (goToProductsList)="showProducts($event)"></app-product-form>
+    <app-product-form [productInForm]="prodSelected" [categories]="categories" (goToProductsList)="showProducts($event)">
+    </app-product-form>
 </div>

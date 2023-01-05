@@ -11,9 +11,11 @@ export class ProductFormComponent implements OnInit {
 
   @Input() productInForm!: any;
   @Output() goToProductsList = new EventEmitter<boolean>();
+  @Input() categories: Array<string> = [];
 
   prodForm!: FormGroup;
   showProdForm: boolean = false;
+  category!: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +24,7 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(JSON.stringify(this.productInForm));
+    console.log(this.productInForm.category.name);
     console.log(typeof (this.productInForm.title));
     console.log(this.productInForm.id);
     console.log(this.productInForm.title);
@@ -30,10 +33,12 @@ export class ProductFormComponent implements OnInit {
       id: this.productInForm.id,
       title: this.productInForm.title,
       price: this.productInForm.price,
-      description: this.productInForm.description
+      description: this.productInForm.description,
+      category: this.productInForm.category.name
     });
 
     console.log(this.prodForm.controls );
+    console.log(this.categories );
   }
 
   get f() { return this.prodForm.controls; }
@@ -43,7 +48,8 @@ export class ProductFormComponent implements OnInit {
       "id": value.id,
       "title":  value.title,
       "price": value.price,
-      "description": value.description
+      "description": value.description,
+      "category": value.category.name
     }
     console.log(info);
     if (info) {
