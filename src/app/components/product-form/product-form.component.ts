@@ -15,7 +15,7 @@ export class ProductFormComponent implements OnInit {
 
   prodForm!: FormGroup;
   showProdForm: boolean = false;
-  category!: string;
+  category!: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,32 +48,35 @@ export class ProductFormComponent implements OnInit {
   updateFormSubmit(value: any) {
     let info = {
       "id": value.id,
-      "title":  value.title,
+      "title": value.title,
       "price": value.price,
       "description": value.description,
-      "category": value.category.name
+      "category": {
+        creationAt:"2023-01-05T22:20:42.000Z",
+        id: 4,
+        image:"https://api.lorem.space/image/shoes?w=640&h=480&r=4169",
+        name: value.category,
+        updatedAt: "2023-01-05T22:20:42.000Z"
+      }
     }
     //TODO no esta arribant el valor de category
     console.log("INFOOOO" + JSON.stringify(info));
     if (info) {
       this.prodService.modifyProduct(info).subscribe(
         (result: any) => {
-          let res = JSON.parse(JSON.stringify(result));
-          console.log(res);
           console.log(result);
           if (result) { //success message
             alert("Comentario modificado correctamente");
           } else {//error message
             alert("El comentario no se ha podido modificar");
           }
-        }
-      );
+        });
     } else {//error message
       alert("El comentario no puede estar vacío");
     }
   }
 
-  goBack(){
+  goBack() {
     this.goToProductsList.emit(this.showProdForm);
   }
 }
