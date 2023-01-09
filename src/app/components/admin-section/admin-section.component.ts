@@ -52,23 +52,22 @@ export class AdminSectionComponent implements OnInit {
     }
   }
 
+
+
   listProducts(): void {
-
     if (!this.showForm) {
-
       this.prodService.getListProducts()
         .subscribe((data: any) => {
           this.products = data;
 
           //Get All categories
           this.products.forEach(item => {
-            return this.allCategories.push(item.category.name);
+            return this.allCategories.push({'id': item.category.id, 'name': item.category.name})
           });
 
-          //Delete duplicate categories and remain the differrent kind of each one
-          this.categories = this.allCategories.filter(function (elem, index, self) {
-            return index === self.indexOf(elem);
-          });
+          this.categories = this.removeDuplicates(this.allCategories, "id");
+  
+          console.log("CATEGORIES: " + JSON.stringify(this.categories));
         });
     }
   }
@@ -88,5 +87,17 @@ export class AdminSectionComponent implements OnInit {
   showProducts(noShowForm: boolean) {
     this.showForm = noShowForm;
     this.listProducts();
+  }
+
+  /**
+   * Delete duplicate categories and remain the differrent kind of each one
+   * @param myArray 
+   * @param Prop 
+   * @returns 
+   */
+   removeDuplicates(myArray: any, Prop: any) {
+    return myArray.filter((obj: any, pos: any, arr: any) => {
+      return arr.map((mapObj: { [x: string]: any; }) => mapObj[Prop]).indexOf(obj[Prop]) === pos;
+    });
   }
 }

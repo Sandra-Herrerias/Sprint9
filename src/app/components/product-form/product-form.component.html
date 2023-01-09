@@ -43,7 +43,7 @@
                     <select class="form-select" formControlName="category" id="category" placeholder="Enter category" required [ngClass]="{ 'is-invalid': f['category'].touched && f['category'].errors, 'is-valid': f['category'].valid }">
              <option value="">Select your option</option>
              <option *ngFor="let category of this.categories" [ngValue]="category">
-               {{category}}
+               {{category.name}}
             
              </option>
            </select>

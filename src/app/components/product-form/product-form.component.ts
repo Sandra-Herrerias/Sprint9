@@ -11,7 +11,7 @@ export class ProductFormComponent implements OnInit {
 
   @Input() productInForm!: any;
   @Output() goToProductsList = new EventEmitter<boolean>();
-  @Input() categories: Array<string> = [];
+  @Input() categories: Array<any> = [];
 
   prodForm!: FormGroup;
   showProdForm: boolean = false;
@@ -41,7 +41,6 @@ export class ProductFormComponent implements OnInit {
     console.log(this.categories);
 
   }
-
 
   get f() { return this.prodForm.controls; }
 
