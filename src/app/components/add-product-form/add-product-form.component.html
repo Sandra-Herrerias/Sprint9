@@ -1,10 +1,10 @@
 <div class="container">
-    <form [formGroup]="prodForm" (ngSubmit)="updateFormSubmit(prodForm.value)">
+    <form [formGroup]="addProdForm" (ngSubmit)="addNewProduct()">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" formControlName="title" id="title" class="form-control" value={{this.productInForm.title}} required [ngClass]="{ 'is-invalid': f['title'].touched && f['title'].errors, 'is-valid': f['title'].valid }">
+                    <input type="text" formControlName="title" id="title" class="form-control" required [ngClass]="{ 'is-invalid': f['title'].touched && f['title'].errors, 'is-valid': f['title'].valid }">
                     <div *ngIf="f['title'].touched && f['title'].errors" class="invalid-feedback">
                         <div *ngIf="f['title'].errors['required']">Title is required!</div>
                     </div>
@@ -15,7 +15,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input type="text" formControlName="price" id="price" class="form-control" value={{this.productInForm.price}} required [ngClass]="{ 'is-invalid': f['price'].touched && f['price'].errors, 'is-valid': f['price'].valid }">
+                    <input type="text" formControlName="price" id="price" class="form-control" required [ngClass]="{ 'is-invalid': f['price'].touched && f['price'].errors, 'is-valid': f['price'].valid }">
                     <div *ngIf="f['price'].touched && f['price'].errors" class="invalid-feedback">
                         <div *ngIf="f['price'].errors['required']">Price is required!</div>
                     </div>
@@ -26,14 +26,14 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea rows="8" type="text" formControlName="description" id="description" class="form-control" value={{this.productInForm.description}} required [ngClass]="{ 'is-invalid': f['description'].touched && f['description'].errors, 'is-valid': f['description'].valid }"></textarea>
+                    <textarea rows="8" type="text" formControlName="description" id="description" class="form-control" required [ngClass]="{ 'is-invalid': f['description'].touched && f['description'].errors, 'is-valid': f['description'].valid }"></textarea>
                     <div *ngIf="f['description'].touched && f['description'].errors" class="invalid-feedback">
                         <div *ngIf="f['description'].errors['required']">Description is required!</div>
                     </div>
                 </div>
             </div>
         </div>
-        {{this.category}}
+
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
@@ -51,8 +51,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="row">
             <div class="form-group">

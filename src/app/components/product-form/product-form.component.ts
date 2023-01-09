@@ -23,11 +23,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(JSON.stringify(this.productInForm));
-    console.log(this.productInForm.category.name);
-    console.log(typeof (this.productInForm.title));
-    console.log(this.productInForm.id);
-    console.log(this.productInForm.title);
 
     this.prodForm = this.formBuilder.group({
       id: this.productInForm.id,
@@ -36,9 +31,6 @@ export class ProductFormComponent implements OnInit {
       description: this.productInForm.description,
       category: this.productInForm.category.name
     });
-
-    console.log(this.prodForm.controls);
-    console.log(this.categories);
 
   }
 
@@ -50,20 +42,14 @@ export class ProductFormComponent implements OnInit {
       "title": value.title,
       "price": value.price,
       "description": value.description,
-      "category": {
-        creationAt:"2023-01-05T22:20:42.000Z",
-        id: 4,
-        image:"https://api.lorem.space/image/shoes?w=640&h=480&r=4169",
-        name: value.category,
-        updatedAt: "2023-01-05T22:20:42.000Z"
+      "category":{
+        "id": value.category.id
       }
     }
-    //TODO no esta arribant el valor de category
-    console.log("INFOOOO" + JSON.stringify(info));
+
     if (info) {
       this.prodService.modifyProduct(info).subscribe(
         (result: any) => {
-          console.log(result);
           if (result) { //success message
             alert("Comentario modificado correctamente");
           } else {//error message

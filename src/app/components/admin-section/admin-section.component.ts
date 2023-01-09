@@ -9,12 +9,13 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class AdminSectionComponent implements OnInit {
 
-  newProduct!: Product;
+
   products!: Product[];
   prodSelected!: any;
   showForm: boolean = false;
   allCategories: Array<any> = [];
   categories: Array<any> = [];
+  addProduct: boolean = false;
 
   constructor(
     private prodService: ProductsService) { }
@@ -23,37 +24,17 @@ export class AdminSectionComponent implements OnInit {
     this.listProducts();
   }
 
-  addNewProduct() {
-    let info = {
-      title: "New Product",
-      price: 89485,
-      description: "test",
-      category: {
-        id: 2
-      },
-      images: ["https://placeimg.com/640/480/any"]
-    }
-    this.newProduct = info;
-    console.log(info);
 
-    if (this.newProduct) {
-      this.prodService.addProduct(info).subscribe(
-        (result: any) => {
-          console.log(result);
-          if (result) {//success message
-            alert("Producto insertado correctamente");
-          } else {//error message
-            alert("El producto no se ha podido añadir");
-          }
-        }
-      );
-    } else {//error message
-      alert("El producto no puede estar vacío");
-    }
+  showAddProduct(){
+    this.addProduct = true;
   }
 
 
-
+  /**
+   * Lists all products.
+   * Inserts name category and id category from each product. 
+   * Then, duplicates are removed.
+   */
   listProducts(): void {
     if (!this.showForm) {
       this.prodService.getListProducts()
@@ -62,22 +43,29 @@ export class AdminSectionComponent implements OnInit {
 
           //Get All categories
           this.products.forEach(item => {
-            return this.allCategories.push({'id': item.category.id, 'name': item.category.name})
+            return this.allCategories.push({ 'id': item.category.id, 'name': item.category.name })
           });
 
           this.categories = this.removeDuplicates(this.allCategories, "id");
-  
-          console.log("CATEGORIES: " + JSON.stringify(this.categories));
         });
     }
   }
 
+  /**
+   * Updates product
+   * showForm variable is set to true
+   * @param event 
+   * @returns product selected
+   */
   updateProduct(event: any) {
-    console.log(event);
     this.prodSelected = event;
-    console.log("TEST" + JSON.stringify(this.prodSelected));
     this.showForm = true;
     return this.prodSelected;
+  }
+
+
+  delete(){
+    alert("delete clicked");
   }
 
   /**
@@ -86,16 +74,17 @@ export class AdminSectionComponent implements OnInit {
    */
   showProducts(noShowForm: boolean) {
     this.showForm = noShowForm;
+    this.addProduct = false;
     this.listProducts();
   }
 
   /**
-   * Delete duplicate categories and remain the differrent kind of each one
+   * Delete duplicate elements and remain the differrent kind of each one
    * @param myArray 
    * @param Prop 
-   * @returns 
+   * @returns array without duplicates
    */
-   removeDuplicates(myArray: any, Prop: any) {
+  removeDuplicates(myArray: any, Prop: any) {
     return myArray.filter((obj: any, pos: any, arr: any) => {
       return arr.map((mapObj: { [x: string]: any; }) => mapObj[Prop]).indexOf(obj[Prop]) === pos;
     });

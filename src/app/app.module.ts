@@ -17,6 +17,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AdminSectionComponent } from './components/admin-section/admin-section.component';
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     ProductDetailComponent,
     AdminSectionComponent,
     UserSectionComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    AddProductFormComponent
   ],
   imports: [
     BrowserModule,
