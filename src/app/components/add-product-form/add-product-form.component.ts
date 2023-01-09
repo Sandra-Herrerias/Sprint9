@@ -8,9 +8,9 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './add-product-form.component.html',
   styleUrls: ['./add-product-form.component.css']
 })
-export class AddProductFormComponent implements OnInit{
+export class AddProductFormComponent implements OnInit {
 
-  newProduct!: Product;
+  newProduct!: any;
   addProdForm!: FormGroup;
   @Input() categories: Array<any> = [];
   @Output() goToProductsList = new EventEmitter<boolean>();
@@ -24,8 +24,8 @@ export class AddProductFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.addProdForm = this.formBuilder.group({
-      id:['', [Validators.required]],
-      title:['', [Validators.required]],
+      id: ['', [Validators.required]],
+      title: ['', [Validators.required]],
       price: ['', [Validators.required]],
       description: ['', [Validators.required]],
       category: ['', [Validators.required]]
@@ -38,16 +38,15 @@ export class AddProductFormComponent implements OnInit{
 
 
   addNewProduct() {
-
+    //  TODO Validate price must be number positive (també al form d'editar)
     let info = {
-      title: "New Product",
-      price: 89485,
-      description: "test",
-      category: {
-        id: 2
-      },
+      title: this.addProdForm.value.title,
+      price: this.addProdForm.value.price,
+      description: this.addProdForm.value.description,
+      "categoryId": this.addProdForm.value.category.id,
       images: ["https://placeimg.com/640/480/any"]
     }
+    console.log(JSON.stringify(info));
     this.newProduct = info;
     if (this.newProduct) {
       this.prodService.addProduct(info).subscribe(
