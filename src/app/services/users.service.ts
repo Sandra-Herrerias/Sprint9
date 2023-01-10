@@ -11,7 +11,6 @@ export class UsersService {
   usersStored!: User[];
 
   private allusers$ = new Subject<User[]>();
-
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
 
@@ -25,18 +24,14 @@ export class UsersService {
   login(user: User) {
     this.usersStored = JSON.parse(localStorage.getItem('users')!);
 
-    const userFound = this.usersStored.find((userLogged) => {
-      return userLogged.username === user.username && userLogged.password === user.password;
-    });
-
-    if (typeof userFound !== "undefined") {
-      localStorage.setItem('currentUser', JSON.stringify(userFound));
-      this.userSubject.next(userFound);
-      this.route.navigate(['/adminSection']);
-
-    } else {
-      alert("Wrong credentials");
+    if (this.usersStored == null ||
+      this.usersStored == undefined) {
+      this.usersStored = [];
     }
+
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.userSubject.next(user);
+    this.route.navigate(['/adminSection']);
   }
 
 
@@ -50,19 +45,17 @@ export class UsersService {
       });
   }
 
-
   register(user: User) {
 
     this.usersStored = JSON.parse(localStorage.getItem('users')!);
-
-    if (this.usersStored == null) {
+    if (this.usersStored == null ||
+      this.usersStored == undefined) {
       this.usersStored = [];
     }
-
     this.usersStored.push(user);
 
     localStorage.setItem('users', JSON.stringify(this.usersStored));
- 
+
     this.allusers$.next(this.usersStored);
     this.login(user);
   }

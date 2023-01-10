@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./admin-section.component.css']
 })
 export class AdminSectionComponent implements OnInit {
-
+  
   products!: Product[];
   prodSelected!: any;
   showForm: boolean = false;

@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AdminSectionComponent } from './components/admin-section/admin-section.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [{
   path: 'home',
@@ -26,7 +27,12 @@ const routes: Routes = [{
 },
 {
   path: 'adminSection',
-  component: AdminSectionComponent
+  component: AdminSectionComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'admin',
+    path: '/adminSection'
+  }
 },
 {
   path: 'login',

@@ -15,10 +15,10 @@ export class RegisterComponent implements OnInit {
 
   submitted = false;
   message: string = "";
+  usersStored!: User[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private userService: UsersService) { }
 
   ngOnInit(): void {
@@ -27,35 +27,37 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      role:['admin']
     });
-
-
   }
 
-  // convenience getter for easy access to form fields
+  // Convenience getter for easy access to form fields
   get f() {
     return this.registerForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
+    let existsUser: User | undefined;
+    this.usersStored = this.userService.getUsersStored();
+
     // stop here if form is invalid
-    if (this.registerForm.valid) {
-      let existsUser = this.userService.getUsersStored().some(user => {
+    if (this.registerForm.valid &&
+      this.usersStored != null &&
+      this.usersStored != undefined) {//if valid form and localstorage filled
+
+      existsUser = this.usersStored.find(user => {
         let currentUser = user.username;
         let formUser = this.registerForm.value.username;
         return currentUser == formUser;
-      });
+      });//if found returns true
 
-      if (existsUser) {
-        alert("Insert new username, this one already exists");
-      } else {
-        this.userService.register(this.registerForm.value);
-        this.registerForm.reset();
-      }
-
-    } else {
-      return;
+      if (existsUser) alert("Insert new username, this one already exists");
+      if (!existsUser) this.userService.register(this.registerForm.value);
+    } else if (this.registerForm.valid &&
+      this.usersStored == null ||
+      this.usersStored == undefined) {//if valid form and localstorage empty
+      this.userService.register(this.registerForm.value);
     }
   }
 }
