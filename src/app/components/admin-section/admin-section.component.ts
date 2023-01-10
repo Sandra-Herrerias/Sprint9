@@ -9,7 +9,6 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class AdminSectionComponent implements OnInit {
 
-
   products!: Product[];
   prodSelected!: any;
   showForm: boolean = false;
@@ -28,7 +27,6 @@ export class AdminSectionComponent implements OnInit {
   showAddProduct(){
     this.addProduct = true;
   }
-
 
   /**
    * Lists all products.
@@ -63,10 +61,44 @@ export class AdminSectionComponent implements OnInit {
     return this.prodSelected;
   }
 
+  /**
+   * Confirms if is the right product to delete
+   * Deletes product if it is confirmed
+   * @param event product to delete
+   */
+  confirmDelete(event: any){
+    if (confirm("¿Está segura de eliminar este producto?")) {
 
-  delete(){
-    alert("delete clicked");
+      let info = {
+        id: event.id,
+      }
+
+      this.prodService.deleteProduct(info).subscribe(
+        (result: any) => {
+          if (result) {
+            this.deleteProdFromList(event);
+            alert("Comentario eliminado correctamente");
+          } else {
+            alert("El comentario no se ha podido eliminar");
+          }
+        }
+      );
+    }
   }
+
+
+    /**
+   * This method removes the product from the list.
+   */
+     deleteProdFromList(productSelected: any): void {
+      for (let i = 0; i < this.products.length; i++) {
+        if (this.products[i].id === productSelected.id) {
+          this.products.splice(i, 1);
+          break;
+        }
+      }
+    }
+
 
   /**
    * Show products list updated

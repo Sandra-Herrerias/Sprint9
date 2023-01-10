@@ -22,9 +22,14 @@ export class ProductsService {
 
   modifyProduct(info: any) {
     let prodId = info.id;
-    console.log("ID: " + prodId);
     return this.http.put(`https://api.escuelajs.co/api/v1/products/${prodId}`,
       info,
       { responseType: "json" });
+  }
+
+  deleteProduct(info: any) {
+    let prodId = info.id;
+    return this.http.delete(`https://api.escuelajs.co/api/v1/products/${prodId}`,
+    info);
   }
 }

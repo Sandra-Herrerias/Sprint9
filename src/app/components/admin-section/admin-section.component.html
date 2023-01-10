@@ -23,7 +23,7 @@
                 <td>{{product.category.name}}</td>
                 <td>{{product.images}}</td>
                 <td><button class="btn btn-success" (click)="updateProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button></td>
-                <td><button class="btn btn-danger" (click)="delete()"><i class="fa-solid fa-trash-can"></i></button></td>
+                <td><button class="btn btn-danger" (click)="confirmDelete(product)"><i class="fa-solid fa-trash-can"></i></button></td>
             </tr>
         </tbody>
     </table>
