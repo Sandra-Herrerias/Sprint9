@@ -26,7 +26,7 @@ export class AddProductFormComponent implements OnInit {
     this.addProdForm = this.formBuilder.group({
       id: ['', [Validators.required]],
       title: ['', [Validators.required]],
-      price: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       description: ['', [Validators.required]],
       category: ['', [Validators.required]]
     });
@@ -38,7 +38,6 @@ export class AddProductFormComponent implements OnInit {
 
 
   addNewProduct() {
-    //  TODO Validate price must be number positive (també al form d'editar)
     let info = {
       title: this.addProdForm.value.title,
       price: this.addProdForm.value.price,

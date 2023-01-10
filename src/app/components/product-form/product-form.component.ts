@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class ProductFormComponent implements OnInit {
     this.prodForm = this.formBuilder.group({
       id: this.productInForm.id,
       title: this.productInForm.title,
-      price: this.productInForm.price,
+      price: [this.productInForm.price, [Validators.required, Validators.pattern("^[0-9]*$")]],
       description: this.productInForm.description,
       category: this.productInForm.category.name
     });

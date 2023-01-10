@@ -18,6 +18,7 @@
                     <input type="text" formControlName="price" id="price" class="form-control" required [ngClass]="{ 'is-invalid': f['price'].touched && f['price'].errors, 'is-valid': f['price'].valid }">
                     <div *ngIf="f['price'].touched && f['price'].errors" class="invalid-feedback">
                         <div *ngIf="f['price'].errors['required']">Price is required!</div>
+                        <div *ngIf="f['price'].errors['pattern']">Must be a number</div>
                     </div>
                 </div>
             </div>
