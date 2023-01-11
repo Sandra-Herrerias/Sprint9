@@ -31,7 +31,10 @@ export class UsersService {
 
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.userSubject.next(user);
-    this.route.navigate(['/adminSection']);
+
+    if (user.role){
+      this.route.navigate(['/profile']);
+    }
   }
 
 

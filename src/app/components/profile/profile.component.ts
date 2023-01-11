@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class NavBarComponent implements OnInit{
-
+export class ProfileComponent implements OnInit{
+  
   loggedIn!: User | null;
   constructor(
     public router: Router, 
@@ -29,13 +29,5 @@ export class NavBarComponent implements OnInit{
        }
      });
 
-    }
-  
-    logout(): void {
-      this.userService.logout();
-    }
-
-    getProducts() {
-      this.router.navigate(['/products']);
     }
 }

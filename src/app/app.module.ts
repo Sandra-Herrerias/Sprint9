@@ -18,6 +18,7 @@ import { AdminSectionComponent } from './components/admin-section/admin-section.
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddProductFormComponent } from './components/add-product-form/add-produ
     AdminSectionComponent,
     UserSectionComponent,
     ProductFormComponent,
-    AddProductFormComponent
+    AddProductFormComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

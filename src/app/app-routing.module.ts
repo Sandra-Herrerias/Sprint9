@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AdminSectionComponent } from './components/admin-section/admin-section.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -24,6 +25,10 @@ const routes: Routes = [{
 {
   path: 'categories',
   component: CategoriesComponent
+},
+{
+  path: 'profile',
+  component: ProfileComponent
 },
 {
   path: 'adminSection',

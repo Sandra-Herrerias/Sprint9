@@ -16,7 +16,10 @@
                 <a class="fontBorder " routerLink="register">SIGN IN</a>
 
                 <li *ngIf="loggedIn && loggedIn.role == 'admin'" class="nav-item">
-                    <a class="nav-item nav-link" routerLink="/adminSection" routerLinkActive="active">PRODUCTS STORED</a>
+                    <a class="nav-item nav-link" routerLink="adminSection" routerLinkActive="active">PRODUCTS STORED</a>
+                </li>
+                <li *ngIf="loggedIn" class="nav-item">
+                    <a class="nav-item nav-link" routerLink="profile" routerLinkActive="active">PROFILE</a>
                 </li>
             </div>
         </div>
