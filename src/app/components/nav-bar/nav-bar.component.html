@@ -22,6 +22,20 @@
                     <a class="nav-item nav-link" routerLink="profile" routerLinkActive="active">PROFILE</a>
                 </li>
             </div>
+
+            <div class="d-flex flex-row order-lg-last align-items-center">
+                <button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+                <ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
+                    <li class="dropdown search-dropdown nav-item py-lg-3">
+                        <a class="btn pink flex-center" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
+                            <i class="fas fa-shopping-cart me-1"></i> Cart
+                            <span class="numCart badge bg-dark text-white ms-1" id="count_product"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
