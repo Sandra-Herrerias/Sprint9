@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      role:['admin']
+      password: ['', Validators.required]
     });
   }
 
@@ -38,12 +37,14 @@ export class LoginComponent implements OnInit {
       this.usersStored != null && 
       this.usersStored !== undefined) {
 
-      userFound = this.usersStored.find((userLogged) => {
+      userFound = this.usersStored.find((userLogged) => { 
+         console.log("USERFOUND: " + userLogged);
         return userLogged.username === this.loginForm.value.username && 
         userLogged.password === this.loginForm.value.password;
+      
       });
-    
-      if (userFound) this.userService.login(this.loginForm.value);
+      console.log(JSON.stringify(userFound));
+      if (userFound) this.userService.login(userFound);
       if (!userFound) alert("Wrong credentials");
 
     } else if(this.loginForm.valid &&
