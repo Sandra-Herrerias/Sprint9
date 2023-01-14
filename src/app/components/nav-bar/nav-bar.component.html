@@ -25,10 +25,10 @@
                             <span class="numCart badge bg-dark text-white ms-1" id="count_product"></span>
                         </a>
                     </li>
+                    <li class="nav-item"><a *ngIf="loggedIn == null" class="fontBorder nav-link" routerLink="login">LOG IN </a></li>
+                    <li class="nav-item"><a *ngIf="loggedIn" class="fontBorder nav-link" (click)="logout()">LOG OUT</a> </li>
+                    <li class="nav-item"><a class="fontBorder nav-link" routerLink="register">SIGN IN</a></li>
                 </ul>
-                <a *ngIf="loggedIn == null" class="fontBorder reg" routerLink="login">LOG IN </a>
-                <a *ngIf="loggedIn" class="fontBorder" (click)="logout()">LOG OUT</a> //
-                <a class="fontBorder " routerLink="register">SIGN IN</a>
             </div>
         </div>
     </div>
