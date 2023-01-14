@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-* ">
     <div class="container-fluid">
         <!-- <a class="navbar-brand" href="/home">Store</a>-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,22 +9,15 @@
                 <li class="nav-item"><a class="nav-link" routerLink="home">HOME</a></li>
                 <li class="nav-item"><a class="nav-link" (click)="getProducts()">PRODUCTS</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="categories">CATEGORIES</a></li>
-            </ul>
-            <div class="d-flex flex-row order-lg-last align-items-center">
-                <a *ngIf="loggedIn == null" class="fontBorder reg" routerLink="login">LOG IN </a>
-                <a *ngIf="loggedIn" class="fontBorder" (click)="logout()">LOG OUT</a> //
-                <a class="fontBorder " routerLink="register">SIGN IN</a>
 
                 <li *ngIf="loggedIn && loggedIn.role == 'admin'" class="nav-item">
                     <a class="nav-item nav-link" routerLink="adminSection" routerLinkActive="active">PRODUCTS STORED</a>
                 </li>
                 <li *ngIf="loggedIn" class="nav-item">
-                    <a routerLink="profile" routerLinkActive="active">PROFILE</a>
+                    <a class="nav-link" routerLink="profile" routerLinkActive="active">PROFILE</a>
                 </li>
-
-                <button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+            </ul>
+            <div class="d-flex align-items-center ms-auto mb-2 mb-lg-0">
                 <ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
                     <li class="dropdown search-dropdown nav-item py-lg-3">
                         <a class="btn pink flex-center" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
@@ -33,6 +26,9 @@
                         </a>
                     </li>
                 </ul>
+                <a *ngIf="loggedIn == null" class="fontBorder reg" routerLink="login">LOG IN </a>
+                <a *ngIf="loggedIn" class="fontBorder" (click)="logout()">LOG OUT</a> //
+                <a class="fontBorder " routerLink="register">SIGN IN</a>
             </div>
         </div>
     </div>
