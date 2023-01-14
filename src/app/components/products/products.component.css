@@ -17,3 +17,25 @@
 button {
     margin-right: 1rem;
 }
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: black;
+    margin: 20px;
+    border-radius: 50%;
+    width: 35px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a,
+.ngx-pagination button {
+    border-radius: 50px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-next {
+    content: "";
+    display: none;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-previous {
+    content: "";
+    display: none;
+}
