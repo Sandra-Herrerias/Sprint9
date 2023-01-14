@@ -9,10 +9,15 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AdminSectionComponent } from './components/admin-section/admin-section.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [{
   path: 'home',
   component: HomeComponent
+},
+{
+  path: 'cart',
+  component: CartComponent
 },
 {
   path: 'products',

@@ -19,6 +19,7 @@ import { UserSectionComponent } from './components/user-section/user-section.com
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     UserSectionComponent,
     ProductFormComponent,
     AddProductFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

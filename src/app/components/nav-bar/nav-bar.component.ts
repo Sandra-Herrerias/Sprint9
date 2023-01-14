@@ -38,4 +38,8 @@ export class NavBarComponent implements OnInit{
     getProducts() {
       this.router.navigate(['/products']);
     }
+
+    goToCart() {
+      this.router.navigate(['/cart']);
+    }
 }
