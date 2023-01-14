@@ -2,15 +2,15 @@
     <div class="container-fluid">
         <!-- <a class="navbar-brand" href="/home">Store</a>-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav" routerLinkActive="active">
                 <li class="nav-item"><a class="nav-link" routerLink="home">HOME</a></li>
                 <li class="nav-item"><a class="nav-link" (click)="getProducts()">PRODUCTS</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="categories">CATEGORIES</a></li>
             </ul>
-            <div class="d-flex">
+            <div class="d-flex flex-row order-lg-last align-items-center">
                 <a *ngIf="loggedIn == null" class="fontBorder reg" routerLink="login">LOG IN </a>
                 <a *ngIf="loggedIn" class="fontBorder" (click)="logout()">LOG OUT</a> //
                 <a class="fontBorder " routerLink="register">SIGN IN</a>
@@ -19,11 +19,9 @@
                     <a class="nav-item nav-link" routerLink="adminSection" routerLinkActive="active">PRODUCTS STORED</a>
                 </li>
                 <li *ngIf="loggedIn" class="nav-item">
-                    <a class="nav-item nav-link" routerLink="profile" routerLinkActive="active">PROFILE</a>
+                    <a routerLink="profile" routerLinkActive="active">PROFILE</a>
                 </li>
-            </div>
 
-            <div class="d-flex flex-row order-lg-last align-items-center">
                 <button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="navbar-toggler-icon"></span>
         </button>
