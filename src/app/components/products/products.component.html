@@ -1,6 +1,6 @@
 <div *ngIf="products" class="d-flex">
     <div class="my-3" *ngFor="let product of products | paginate: {itemsPerPage: ipp, currentPage: cp};  let i = index">
-        <div class="card text-white bg-dark">
+        <div class="card text-dark bg-*">
             <img src="{{ product.images[0] }} " class="card-img-top " alt="imgProduct ">
             <div class="card-body ">
                 <h5 class="card-title">{{ product.title }}</h5>
