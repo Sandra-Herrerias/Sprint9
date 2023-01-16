@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { CartService } from 'src/app/services/cart.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class NavBarComponent implements OnInit{
   loggedIn!: User | null;
   constructor(
     public router: Router, 
-    private userService: UsersService) { }
+    private userService: UsersService,
+    private cartProdsService: CartService) { }
 
     ngOnInit(): void {
       this.userService.user.subscribe((result: User) => {
@@ -28,7 +30,9 @@ export class NavBarComponent implements OnInit{
          };     console.log(this.loggedIn);
        }
      });
-
+     this.cartProdsService.getTotalProductsObservable().subscribe(
+       (totalProducts: number) => {console.log(totalProducts)}
+     );
     }
   
     logout(): void {

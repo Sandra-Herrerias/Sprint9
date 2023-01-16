@@ -1,7 +1,7 @@
 import { ProductCounter } from './../models/product-counter';
 import { Product } from 'src/app/models/product';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -9,12 +9,14 @@ import { tap } from 'rxjs/operators';
 })
 export class CartService {
 
-  private totalProducts = 0;
+  private totalProductsSubject: Subject<number>;
+  private totalProducts: number = 0;
   //llista de productes seleccionats
   private cartProducts!: Array<ProductCounter>;
 
   constructor() {
     this.cartProducts = [];
+    this.totalProductsSubject = new Subject<number>();
   }
 
 
@@ -38,15 +40,34 @@ export class CartService {
       this.cartProducts.push(prod);
     }
     this.totalProducts++;
+    this.totalProductsSubject.next(this.totalProducts);
   }
+
+  removeFromCart(product: Product) {
+    var index: number = -1;
+    this.cartProducts.find((pc: ProductCounter, i: number) => {
+      if (pc.product?.id == product.id && pc.quantity >= 1) {
+        index = i;
+        pc.quantity--;
+
+        if(pc.product?.id && pc.quantity == 0){
+          this.cartProducts.slice(index,1);
+        }
+      }
+    });
+    this.totalProducts--;
+    //insert item number added to cart
+  }
+
+
 
   getCart() {
     console.log(this.cartProducts);
     return this.cartProducts;
   }
 
-  numberProductsCart() {
-    return this.totalProducts;
+  getTotalProductsObservable(): Observable<number> {
+    return this.totalProductsSubject.asObservable();
   }
 
   sendOrder() {

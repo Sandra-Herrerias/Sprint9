@@ -48,8 +48,6 @@ export class ProductsComponent implements OnInit {
     } else {
       this.listProducts();
     }
-
-    console.log(this.cartProdsService.numberProductsCart());
   }
 
 
@@ -84,6 +82,5 @@ export class ProductsComponent implements OnInit {
         this.cartProdsService.addProdToCart(p);
       }
     });
-    console.log(this.cartProdsService.numberProductsCart());
   }
 }
