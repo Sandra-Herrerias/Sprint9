@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -28,6 +30,7 @@ export class ProductsComponent implements OnInit {
     private catService: CategoriesService,
     private prodService: ProductsService,
     private route: ActivatedRoute,
+    private cartProdsService: CartService,
     private router: Router) {
     this.ipp = 10;
     this.cp = 1;
@@ -45,6 +48,8 @@ export class ProductsComponent implements OnInit {
     } else {
       this.listProducts();
     }
+
+    console.log(this.cartProdsService.numberProductsCart());
   }
 
 
@@ -73,14 +78,12 @@ export class ProductsComponent implements OnInit {
   /** CART FUNCTIONS */
 
   addToCart(id: number) {
-    let product;
 
-    // 1. Loop for to the array products to get the item to add to cart
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id == id) {
-        product = this.products[i];
+    this.products.find((p: Product) => {
+      if (p.id == id) {
+        this.cartProdsService.addProdToCart(p);
       }
-    }
-    console.log("PRODUCT: " + product);
+    });
+    console.log(this.cartProdsService.numberProductsCart());
   }
 }

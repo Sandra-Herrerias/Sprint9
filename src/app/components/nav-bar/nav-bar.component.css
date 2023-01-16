@@ -7,3 +7,24 @@ i,
     text-decoration: none;
     color: gray;
 }
+
+.badge:hover {
+    /* Fallback: Set a background color. */
+    background-color: transparent;
+    /* Create the gradient. */
+    background-image: linear-gradient(180deg, #ff5f6d, #ffc371);
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+a:hover span {
+    -webkit-text-fill-color: white;
+    -moz-text-fill-color: white;
+}

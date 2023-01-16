@@ -8,4 +8,4 @@ export interface Product {
         name?: string;
       }
     images?: string[];
-}
+  }

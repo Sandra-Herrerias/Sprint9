@@ -1,1 +1,3 @@
-<p>cart works!</p>
+<div *ngFor="let productCounter of cart">
+    {{productCounter.product?.id}}-----{{productCounter.quantity}}
+</div>
