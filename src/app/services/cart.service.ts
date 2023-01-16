@@ -56,6 +56,7 @@ export class CartService {
       }
     });
     this.totalProducts--;
+    this.totalProductsSubject.next(this.totalProducts);
     //insert item number added to cart
   }
 
