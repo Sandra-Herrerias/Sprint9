@@ -5,6 +5,10 @@
     border: none;
 }
 
+.card-img-top {
+    border-radius: 0px;
+}
+
 .d-flex {
     flex-wrap: wrap;
     justify-content: space-evenly;

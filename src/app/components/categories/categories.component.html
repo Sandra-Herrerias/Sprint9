@@ -1,12 +1,12 @@
 <div *ngIf="categories" class="d-flex">
     <div class="my-3" *ngFor="let category of categories | paginate: {itemsPerPage: ipp, currentPage: cp};  let i = index">
         <div class="flip" (click)="getCategory(category)">
-            <div class="front" style="background-image: url(https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">
+            <div class="front" style="background-image: url({{categories[i].image}})">
                 <h1 class="text-shadow">{{categories[i].name}}</h1>
             </div>
             <div class="back">
-                <h2>Angular</h2>
-                <p>Good tools make application development quicker and easier to maintain than if you did everything by hand..</p>
+                <h2>CHECK MORE</h2>
+                <p>{{categories[i].name}}</p>
             </div>
         </div>
     </div>
