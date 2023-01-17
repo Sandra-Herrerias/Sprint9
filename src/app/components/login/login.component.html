@@ -1,6 +1,6 @@
 <div class="container d-flex">
-    <div id="formDiv" class="text-center bg-dark my-3 p-3">
-        <h2>ENTER YOUR CREDENTIALS</h2>
+    <div id="formDiv" class="text-center bg-* my-3 p-3">
+        <h2 class="mb-5">ENTER YOUR CREDENTIALS</h2>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group mb-3 row">
                 <label class="col-4 col-form-label" for="username">Username</label>
@@ -23,8 +23,8 @@
 
             </div>
             <div class="form-group mt-3">
-                <button [disabled]="!loginForm.valid" class="btn btn-secondary">Continue</button>
-                <a [routerLink]="['/register']" class="btn btn-link fontBorder">Register</a>
+                <button [disabled]="!loginForm.valid" class="custom-btn btn-6 mx-3">CONTINUE</button>
+                <a [routerLink]="['/register']">REGISTER</a>
             </div>
         </form>
 
