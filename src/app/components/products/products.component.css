@@ -19,15 +19,16 @@ button {
 }
 
 .my-pagination ::ng-deep .ngx-pagination .current {
-    background: black;
+    background: white;
     margin: 20px;
-    border-radius: 50%;
+    border-left: 2px solid black;
     width: 35px;
+    color: black;
 }
 
 .my-pagination ::ng-deep .ngx-pagination a,
 .ngx-pagination button {
-    border-radius: 50px;
+    border-radius: none;
 }
 
 .my-pagination ::ng-deep .ngx-pagination .pagination-next {
