@@ -1,7 +1,7 @@
 import { ProductCounter } from './../models/product-counter';
 import { Product } from 'src/app/models/product';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, VirtualTimeScheduler } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -13,6 +13,8 @@ export class CartService {
   private totalProducts: number = 0;
   //llista de productes seleccionats
   private cartProducts!: Array<ProductCounter>;
+
+
 
   constructor() {
     this.cartProducts = [];
@@ -35,6 +37,7 @@ export class CartService {
 
     if (index != -1) {
       this.cartProducts[index].quantity++;
+
     } else {
       let prod: ProductCounter = { product: product, quantity: 1 };
       this.cartProducts.push(prod);
@@ -45,22 +48,25 @@ export class CartService {
 
   removeFromCart(product: Product) {
     var index: number = -1;
+    //search for index
     this.cartProducts.find((pc: ProductCounter, i: number) => {
       if (pc.product?.id == product.id && pc.quantity >= 1) {
         index = i;
-        pc.quantity--;
-
-        if(pc.product?.id && pc.quantity == 0){
-          this.cartProducts.slice(index,1);
-        }
-      }
+      } 
     });
+
+    //decrease quantity from the product index found
+    this.cartProducts[index].quantity--;
+
+    //removes product in case quantity equals to zero
+    if (this.cartProducts[index].quantity == 0) {
+      this.cartProducts.splice(index, 1);
+    }
+
     this.totalProducts--;
     this.totalProductsSubject.next(this.totalProducts);
     //insert item number added to cart
   }
-
-
 
   getCart() {
     console.log(this.cartProducts);
@@ -71,8 +77,15 @@ export class CartService {
     return this.totalProductsSubject.asObservable();
   }
 
+  getTotalPrice() : number {
+    let totalPrice = 0;
+    for (let i = 0; i < this.cartProducts.length; i++) {
+      totalPrice += (this.cartProducts[i].product!.price! * this.cartProducts[i].quantity!);
+    }
+    return totalPrice;
+  }
+
   sendOrder() {
     //print console + alert
   }
-
 }

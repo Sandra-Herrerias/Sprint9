@@ -23,8 +23,6 @@ export class ProductsComponent implements OnInit {
   //Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
   cartList = [];
   cart = [];
-  total = 0;
-  totalQuantity = 0;
 
   constructor(
     private catService: CategoriesService,

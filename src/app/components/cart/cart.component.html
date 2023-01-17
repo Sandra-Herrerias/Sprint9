@@ -1,3 +1,4 @@
 <div *ngFor="let productCounter of cart" (click)="removeProdCart(productCounter)">
-    {{productCounter.product?.id}}-----{{productCounter.quantity}}
+    {{productCounter.product?.title}}----- ID: {{productCounter.product?.id}}----- QUANTITY: {{productCounter.quantity}}**** PRICE: {{productCounter.product?.price}}
 </div>
+<p>TOTAL: {{totalPrice}}</p>
