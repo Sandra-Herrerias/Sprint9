@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 
   cart!: Array<ProductCounter>;
   totalPrice = 0;
+  subtotalPrice = 0;
 
   constructor(private cartService: CartService) { }
 
@@ -28,4 +29,8 @@ export class CartComponent implements OnInit {
     console.log('price: ' + this.totalPrice);
   }
 
+  addToCart(pc: ProductCounter) {
+    this.cartService.addProdToCart(pc.product!);
+    this.totalPrice = this.cartService.getTotalPrice();
+  }
 }

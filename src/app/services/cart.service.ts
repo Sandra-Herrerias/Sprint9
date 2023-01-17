@@ -85,6 +85,18 @@ export class CartService {
     return totalPrice;
   }
 
+  getSubtotalPrice(productCounter: ProductCounter) : number {
+    let subtotalPrice = 0;
+    let i = -1;
+    this.cartProducts.find((pc: ProductCounter, index: number) => {
+      if (pc.product?.id == productCounter.product?.id) {
+        i = index;
+      } 
+    });
+    subtotalPrice += (this.cartProducts[i].product!.price! * this.cartProducts[i].quantity!);
+    return subtotalPrice;
+  }
+
   sendOrder() {
     //print console + alert
   }

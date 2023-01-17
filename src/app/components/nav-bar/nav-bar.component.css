@@ -1,11 +1,11 @@
 i,
 .pink {
-    color: gray;
+    color: black;
 }
 
 .fontBorder {
     text-decoration: none;
-    color: gray;
+    color: black;
 }
 
 .badge:hover {
@@ -24,7 +24,30 @@ i,
     -moz-text-fill-color: transparent;
 }
 
-a:hover span {
-    -webkit-text-fill-color: white;
-    -moz-text-fill-color: white;
+a:hover span,
+a:hover {
+    color: black;
+    text-decoration-color: black;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+    font-weight: normal;
+}
+
+a {
+    color: black;
+    text-decoration-color: black;
+    text-decoration-line: none;
+}
+
+li:hover {
+    text-decoration-color: black;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+}
+
+li {
+    font-weight: bolder;
+    color: black;
 }

@@ -1,4 +1,19 @@
-<div *ngFor="let productCounter of cart" (click)="removeProdCart(productCounter)">
-    {{productCounter.product?.title}}----- ID: {{productCounter.product?.id}}----- QUANTITY: {{productCounter.quantity}}**** PRICE: {{productCounter.product?.price}}
-</div>
-<p>TOTAL: {{totalPrice}}</p>
+<table class="table" *ngIf="cart">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let productCounter of cart; let i = index">
+        <tr>
+            <th scope="row">{{productCounter.product?.id}}</th>
+            <td> {{productCounter.product?.title}}</td>
+            <td> <button (click)="removeProdCart(productCounter)" type="button" class="btn btn-secondary mx-3"><i class="fa-sharp fa-solid fa-minus"></i></button>{{productCounter.quantity}}<button (click)="addToCart(productCounter)" type="button" class="btn btn-secondary mx-3"><i class="fa-sharp fa-solid fa-plus"></i></button></td>
+            <td>{{productCounter.product?.price}}</td>
+        </tr>
+    </tbody>
+    <tr>TOTAL: {{totalPrice}}</tr>
+</table>
