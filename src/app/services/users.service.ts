@@ -52,10 +52,10 @@ export class UsersService {
     localStorage.removeItem("currentUser");
     this.userSubject.next(JSON.parse(null!));
 
-    // this.route.navigate(['/home'])
-    //   .then(() => {
-    //     window.location.reload();
-    //   });
+    this.route.navigate(['/home'])
+      .then(() => {
+        window.location.reload();
+      });
   }
 
   register(user: User) {

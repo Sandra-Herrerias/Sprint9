@@ -32,7 +32,7 @@ export class NavBarComponent implements OnInit{
      });
      this.cartProdsService.getTotalProductsObservable().subscribe(
        (totalProducts: number) => {
-         console.log("HE DE POSSAR EL TOTAL DE PRODUCTES QUE OBTINC AQUÍ EN EL CARRET DE LA NAVBAR EN UN NUMERO")
+         console.log("HE DE POSSAR EL TOTAL DE PRODUCTES QUE OBTINC AQUÍ EN EL CARRET DE LA NAVBAR EN UN NUMERO");
         }
      );
     }

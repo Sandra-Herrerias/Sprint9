@@ -10,6 +10,7 @@ import { AdminSectionComponent } from './components/admin-section/admin-section.
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AdminCategoriesSectionComponent } from './components/admin-categories-section/admin-categories-section.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -42,6 +43,15 @@ const routes: Routes = [{
   data: {
     role: 'admin',
     path: '/adminSection'
+  }
+},
+{
+  path: 'adminCatSection',
+  component: AdminCategoriesSectionComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'admin',
+    path: '/adminCatSection'
   }
 },
 {

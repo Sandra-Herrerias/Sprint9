@@ -16,13 +16,13 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot) {
 
     const user = this.service.usuariData();
-    let path = '/adminSection';
+
     //Si la ruta es adminSection y el rol es admin, me tiene que dejar pasar a la vista adminSection
-    if (user && route.data['path'] == path && route.data['role'] == user.role) {
+    if (user && route.data['role'] == user.role) {
       return true;
     }
 
-   // this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
     return false;
   }
 

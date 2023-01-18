@@ -10,7 +10,10 @@
                 <li class="nav-item"><a class="nav-link" routerLink="categories">CATEGORIES</a></li>
 
                 <li *ngIf="loggedIn && loggedIn.role == 'admin'" class="nav-item">
-                    <a class="nav-link" routerLink="adminSection" routerLinkActive="active">PRODUCTS STORED</a>
+                    <a class="nav-link" routerLink="adminSection" routerLinkActive="active">PRODUCTS MANAGEMENT</a>
+                </li>
+                <li *ngIf="loggedIn && loggedIn.role == 'admin'" class="nav-item">
+                    <a class="nav-link" routerLink="adminCatSection" routerLinkActive="active">CATEGORIES MANAGEMENT</a>
                 </li>
                 <li *ngIf="loggedIn" class="nav-item">
                     <a class="nav-link" routerLink="profile" routerLinkActive="active">PROFILE</a>

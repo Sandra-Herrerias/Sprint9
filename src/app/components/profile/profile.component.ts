@@ -10,30 +10,40 @@ import { Order } from 'src/app/models/order';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit{
-  
+export class ProfileComponent implements OnInit {
+
   loggedIn!: User | null;
   orders: Array<Order> = [];
 
   constructor(
-    public router: Router, 
-    private userService: UsersService, 
+    public router: Router,
+    private userService: UsersService,
     private orderService: OrdersService) { }
 
-    ngOnInit(): void {
-      this.userService.user.subscribe((result: User) => {
-       if (result) {
-         this.loggedIn = {
-           firstName: result.firstName, 
-           lastName: result.lastName, 
-           username: result.username,
-           password: result.password, 
-           id:result.id,
-           role:result.role
-         };
-       }
-     });
+  ngOnInit(): void {
+    this.userService.user.subscribe((result: User) => {
+      if (result) {
+        this.loggedIn = {
+          firstName: result.firstName,
+          lastName: result.lastName,
+          username: result.username,
+          password: result.password,
+          id: result.id,
+          role: result.role
+        };
+      }
+    });
 
-     this.orders = this.orderService.getOrdersByUser(this.loggedIn!);
+    console.log("OUT");
+    if (this.loggedIn) {
+      console.log("Logged");
+      if (this.loggedIn!.role == 'client') {
+        this.orders = this.orderService.getOrdersByUser(this.loggedIn!);
+      }
+
+      if (this.loggedIn!.role == 'admin') {
+        this.orders = this.orderService.getAllOrders();
+      }
     }
+  }
 }

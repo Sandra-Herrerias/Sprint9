@@ -1,8 +1,9 @@
 <div *ngIf="loggedIn && loggedIn.role == 'admin'" class="nav-item">
-    <p>COMANDES ADMIN</p>
+    <p>COMANDES DE TOTS ELS USUARIS</p>
 </div>
 
 <div *ngIf="loggedIn && loggedIn.role == 'client'" class="nav-item">
     <p>COMANDES CLIENT</p>
-    <div>{{orders | json}}</div>
 </div>
+
+<div>{{orders | json}}</div>
