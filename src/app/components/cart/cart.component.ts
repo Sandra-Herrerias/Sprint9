@@ -12,7 +12,6 @@ export class CartComponent implements OnInit {
 
   cart!: Array<ProductCounter>;
   totalPrice = 0;
-  subtotalPrice = 0;
 
   constructor(private cartService: CartService) { }
 

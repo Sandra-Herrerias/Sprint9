@@ -12,7 +12,7 @@
             <th scope="row">{{productCounter.product?.id}}</th>
             <td> {{productCounter.product?.title}}</td>
             <td> <button (click)="removeProdCart(productCounter)" type="button" class="btn btn-secondary mx-3"><i class="fa-sharp fa-solid fa-minus"></i></button>{{productCounter.quantity}}<button (click)="addToCart(productCounter)" type="button" class="btn btn-secondary mx-3"><i class="fa-sharp fa-solid fa-plus"></i></button></td>
-            <td>{{productCounter.product?.price}}</td>
+            <td>{{productCounter.subtotal}}</td>
         </tr>
     </tbody>
     <tr>TOTAL: {{totalPrice}}</tr>

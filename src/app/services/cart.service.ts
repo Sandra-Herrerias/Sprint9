@@ -37,9 +37,10 @@ export class CartService {
 
     if (index != -1) {
       this.cartProducts[index].quantity++;
+      this.cartProducts[index].subtotal = this.getSubtotalProduct(index);
 
     } else {
-      let prod: ProductCounter = { product: product, quantity: 1 };
+      let prod: ProductCounter = { product: product, quantity: 1, subtotal: product.price! };
       this.cartProducts.push(prod);
     }
     this.totalProducts++;
@@ -57,7 +58,8 @@ export class CartService {
 
     //decrease quantity from the product index found
     this.cartProducts[index].quantity--;
-
+    this.cartProducts[index].subtotal = this.getSubtotalProduct(index);
+    
     //removes product in case quantity equals to zero
     if (this.cartProducts[index].quantity == 0) {
       this.cartProducts.splice(index, 1);
@@ -66,6 +68,10 @@ export class CartService {
     this.totalProducts--;
     this.totalProductsSubject.next(this.totalProducts);
     //insert item number added to cart
+  }
+
+  getSubtotalProduct(index:number){
+      return this.cartProducts[index].quantity *  this.cartProducts[index].product!.price!;
   }
 
   getCart() {
