@@ -53,13 +53,13 @@ export class CartService {
     this.cartProducts.find((pc: ProductCounter, i: number) => {
       if (pc.product?.id == product.id && pc.quantity >= 1) {
         index = i;
-      } 
+      }
     });
 
     //decrease quantity from the product index found
     this.cartProducts[index].quantity--;
     this.cartProducts[index].subtotal = this.getSubtotalProduct(index);
-    
+
     //removes product in case quantity equals to zero
     if (this.cartProducts[index].quantity == 0) {
       this.cartProducts.splice(index, 1);
@@ -70,12 +70,11 @@ export class CartService {
     //insert item number added to cart
   }
 
-  getSubtotalProduct(index:number){
-      return this.cartProducts[index].quantity *  this.cartProducts[index].product!.price!;
+  getSubtotalProduct(index: number) {
+    return this.cartProducts[index].quantity * this.cartProducts[index].product!.price!;
   }
 
   getCart() {
-    console.log(this.cartProducts);
     return this.cartProducts;
   }
 
@@ -83,7 +82,7 @@ export class CartService {
     return this.totalProductsSubject.asObservable();
   }
 
-  getTotalPrice() : number {
+  getTotalPrice(): number {
     let totalPrice = 0;
     for (let i = 0; i < this.cartProducts.length; i++) {
       totalPrice += (this.cartProducts[i].product!.price! * this.cartProducts[i].quantity!);
@@ -91,13 +90,13 @@ export class CartService {
     return totalPrice;
   }
 
-  getSubtotalPrice(productCounter: ProductCounter) : number {
+  getSubtotalPrice(productCounter: ProductCounter): number {
     let subtotalPrice = 0;
     let i = -1;
     this.cartProducts.find((pc: ProductCounter, index: number) => {
       if (pc.product?.id == productCounter.product?.id) {
         i = index;
-      } 
+      }
     });
     subtotalPrice += (this.cartProducts[i].product!.price! * this.cartProducts[i].quantity!);
     return subtotalPrice;

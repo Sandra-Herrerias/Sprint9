@@ -23,13 +23,15 @@ export class CartComponent implements OnInit {
 
   removeProdCart(pc: ProductCounter) {
     this.cartService.removeFromCart(pc.product!);
-    console.log('price: ' + this.totalPrice);
     this.totalPrice = this.cartService.getTotalPrice();
-    console.log('price: ' + this.totalPrice);
   }
 
   addToCart(pc: ProductCounter) {
     this.cartService.addProdToCart(pc.product!);
     this.totalPrice = this.cartService.getTotalPrice();
+  }
+
+  sendOrder(){
+    console.log("sending order!");
   }
 }

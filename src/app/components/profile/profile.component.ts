@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit{
            username: result.username,
            id:result.id,
            role:result.role
-         };     console.log(this.loggedIn);
+         };
        }
      });
 

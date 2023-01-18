@@ -26,7 +26,6 @@ export class CategoriesComponent {
   listCategories() {
     this.catService.getListCategories().subscribe((data: any) => {
       this.categories = data;
-      console.log(this.categories);
     });
 
     return this.categories;

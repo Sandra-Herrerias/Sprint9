@@ -38,7 +38,6 @@ export class ProductsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.categoryId = params['id'];
       this.showByCategory = params['byCategory'];
-      console.log(this.showByCategory);
     });
 
     if (this.showByCategory) {
@@ -47,7 +46,6 @@ export class ProductsComponent implements OnInit {
       this.listProducts();
     }
   }
-
 
   /** GENERAL FUNCTIONS */
 
@@ -69,7 +67,6 @@ export class ProductsComponent implements OnInit {
   getProdDetail(e: any) {
     this.router.navigate(['/prodDetail']);
   }
-
 
   /** CART FUNCTIONS */
 

@@ -38,12 +38,11 @@ export class LoginComponent implements OnInit {
       this.usersStored !== undefined) {
 
       userFound = this.usersStored.find((userLogged) => { 
-         console.log("USERFOUND: " + userLogged);
         return userLogged.username === this.loginForm.value.username && 
         userLogged.password === this.loginForm.value.password;
       
       });
-      console.log(JSON.stringify(userFound));
+
       if (userFound) this.userService.login(userFound);
       if (!userFound) alert("Wrong credentials");
 

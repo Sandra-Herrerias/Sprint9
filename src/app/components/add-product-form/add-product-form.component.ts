@@ -30,8 +30,6 @@ export class AddProductFormComponent implements OnInit {
       description: ['', [Validators.required]],
       category: ['', [Validators.required]]
     });
-
-    console.log("CATEGORIES: " + this.categories);
   }
 
   get f() { return this.addProdForm.controls; }
@@ -45,12 +43,11 @@ export class AddProductFormComponent implements OnInit {
       "categoryId": this.addProdForm.value.category.id,
       images: ["https://placeimg.com/640/480/any"]
     }
-    console.log(JSON.stringify(info));
+
     this.newProduct = info;
     if (this.newProduct) {
       this.prodService.addProduct(info).subscribe(
         (result: any) => {
-          console.log(result);
           if (result) {//success message
             alert("Producto insertado correctamente");
           } else {//error message

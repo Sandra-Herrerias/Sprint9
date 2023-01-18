@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.usersInLocalStorage = this.userService.getUsersStored();
-    console.log("USERS STORED: " + JSON.stringify(this.userService.getUsersStored()));
 
     if (this.usersInLocalStorage != null && this.usersInLocalStorage != undefined) {
       this.usersInLocalStorage.find((user: User) => {
@@ -26,8 +25,6 @@ export class HomeComponent implements OnInit {
         }
       });
     }
-      
-    
 
     if (!this.adminExists) {
 
@@ -40,7 +37,6 @@ export class HomeComponent implements OnInit {
       };
 
       this.userService.register(mainUser);
-      console.log(mainUser);
     }
   }
 }
