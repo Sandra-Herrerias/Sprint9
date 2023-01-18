@@ -27,11 +27,13 @@ export class NavBarComponent implements OnInit{
            username: result.username,
            id:result.id,
            role:result.role
-         };     console.log(this.loggedIn);
+         }; 
        }
      });
      this.cartProdsService.getTotalProductsObservable().subscribe(
-       (totalProducts: number) => {console.log(totalProducts)}
+       (totalProducts: number) => {
+         console.log("HE DE POSSAR EL TOTAL DE PRODUCTES QUE OBTINC AQUÍ EN EL CARRET DE LA NAVBAR EN UN NUMERO")
+        }
      );
     }
   
