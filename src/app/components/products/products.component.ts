@@ -64,8 +64,8 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  getProdDetail(e: any) {
-    this.router.navigate(['/prodDetail']);
+  getProdDetail(product: any) {
+    this.router.navigate(['/prodDetail'], {queryParams: {productId: product.id}});
   }
 
   /** CART FUNCTIONS */

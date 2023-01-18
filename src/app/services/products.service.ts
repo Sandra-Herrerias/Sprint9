@@ -32,4 +32,12 @@ export class ProductsService {
     return this.http.delete(`https://api.escuelajs.co/api/v1/products/${prodId}`,
     info);
   }
+
+  getProductById(info: any) {
+    console.log(info);
+    let prodId = info.id;
+    
+    return this.http.get(`https://api.escuelajs.co/api/v1/products/${prodId}`,
+    info);
+  }
 }

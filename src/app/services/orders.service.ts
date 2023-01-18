@@ -24,9 +24,11 @@ export class OrdersService {
   }
 
   sendOrder(order: Order) : void{
-    let orders = this.getAllOrders();
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
+    let orders: Array<Order> = this.getAllOrders();
+    if(order.cart.length > 0){
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+    } 
   }
 
   getAllOrders() : Array<Order>{
@@ -41,8 +43,6 @@ export class OrdersService {
     let orders: Array<Order> = this.getAllOrders();
     let ordersByUser : Array<Order> = [];
     for(let i = 0; i < orders.length; i++){
-      console.log("ORDERS USER ID: " + orders[i].user.id);
-      console.log("USER PARAM" + user.id);
       if(orders[i].user.id == user.id){
         console.log(JSON.stringify(orders[i]));
         ordersByUser.push(orders[i]);
