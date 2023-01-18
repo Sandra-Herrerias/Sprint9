@@ -21,6 +21,16 @@ export class UsersService {
     this.usersStored = [];
   }
 
+  getNextId(){
+    let users: User[] = JSON.parse(localStorage.getItem('users')!);
+    let maxId = 0;
+    users.find((user) => { 
+      if (user.id > maxId)
+        maxId = user.id;
+    });
+    return maxId + 1;
+  }
+
   login(user: User) {
     this.usersStored = JSON.parse(localStorage.getItem('users')!);
 
@@ -55,6 +65,11 @@ export class UsersService {
       this.usersStored == undefined) {
       this.usersStored = [];
     }
+
+    if(!user.id){
+      user.id = this.getNextId();
+    }
+
     this.usersStored.push(user);
 
     localStorage.setItem('users', JSON.stringify(this.usersStored));
@@ -70,6 +85,10 @@ export class UsersService {
   getUsersStored(): User[] {
     this.usersStored = JSON.parse(localStorage.getItem('users')!);
     return this.usersStored;
+  }
+
+  getLoggedUser(): User {
+    return JSON.parse(localStorage.getItem('currentUser')!);
   }
 
   public usuariData(): User | any {

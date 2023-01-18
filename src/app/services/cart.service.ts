@@ -1,8 +1,10 @@
+import { UsersService } from 'src/app/services/users.service';
 import { ProductCounter } from './../models/product-counter';
 import { Product } from 'src/app/models/product';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, VirtualTimeScheduler } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { OrdersService } from './orders.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class CartService {
 
 
 
-  constructor() {
+  constructor(private orderService: OrdersService,
+    private usersService: UsersService) {
     this.cartProducts = [];
     this.totalProductsSubject = new Subject<number>();
   }
@@ -103,6 +106,14 @@ export class CartService {
   }
 
   sendOrder() {
-    //print console + alert
+    let loggedUser = this.usersService.getLoggedUser();
+    let order = {
+      id: this.orderService.getNextId(),
+      cart: this.cartProducts,
+      user: loggedUser
+    }
+    this.orderService.sendOrder(order);
+    this.cartProducts = [];
+    this.totalProducts= 0;
   }
 }

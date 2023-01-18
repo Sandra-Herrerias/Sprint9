@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
         userLogged.password === this.loginForm.value.password;
       
       });
-
       if (userFound) this.userService.login(userFound);
       if (!userFound) alert("Wrong credentials");
 

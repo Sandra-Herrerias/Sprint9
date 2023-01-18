@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.usersInLocalStorage = this.userService.getUsersStored();
-
+    
     if (this.usersInLocalStorage != null && this.usersInLocalStorage != undefined) {
       this.usersInLocalStorage.find((user: User) => {
         if (user.role === "admin") {
@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
     }
 
     if (!this.adminExists) {
-
       const mainUser: User = {
         id: 1,
         username: 'admin@admin.com',

@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { UsersService } from 'src/app/services/users.service';
 import { ProductCounter } from './../../models/product-counter';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
@@ -13,7 +15,8 @@ export class CartComponent implements OnInit {
   cart!: Array<ProductCounter>;
   totalPrice = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private usersService: UsersService) { }
 
 
   ngOnInit(): void {
@@ -32,6 +35,13 @@ export class CartComponent implements OnInit {
   }
 
   sendOrder(){
-    console.log("sending order!");
+    let loggedUser = this.usersService.getLoggedUser();
+    if(!loggedUser){
+      alert("You should be registered and logged to make an order")
+    }else{
+      this.cartService.sendOrder();
+      this.cart = [];
+      this.totalPrice = 0;
+    }
   }
 }
