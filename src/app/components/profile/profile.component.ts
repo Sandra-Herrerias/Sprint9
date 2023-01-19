@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/user';
 import { OrdersService } from 'src/app/services/orders.service';
 import { Order } from 'src/app/models/order';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -34,7 +35,7 @@ export class ProfileComponent implements OnInit {
       }
     });
 
-    console.log("OUT");
+
     if (this.loggedIn) {
       console.log("Logged");
       if (this.loggedIn!.role == 'client') {

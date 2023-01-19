@@ -16,8 +16,6 @@ export class CartService {
   //llista de productes seleccionats
   private cartProducts!: Array<ProductCounter>;
 
-
-
   constructor(private orderService: OrdersService,
     private usersService: UsersService) {
     this.cartProducts = [];
@@ -32,6 +30,8 @@ export class CartService {
   addProdToCart(product: Product) {
     var index: number = -1;
 
+    console.log(product);
+    
     this.cartProducts.find((pc: ProductCounter, i: number) => {
       if (pc.product?.id == product.id) {
         index = i;

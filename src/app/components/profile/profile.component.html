@@ -1,9 +1,59 @@
-<div *ngIf="loggedIn && loggedIn.role == 'admin'" class="nav-item">
-    <p>COMANDES DE TOTS ELS USUARIS</p>
-</div>
-
 <div *ngIf="loggedIn && loggedIn.role == 'client'" class="nav-item">
-    <p>COMANDES CLIENT</p>
-</div>
 
-<div>{{orders | json}}</div>
+    <h3>COMANDES CLIENT: {{loggedIn.firstName | uppercase}} {{loggedIn.lastName | uppercase}}</h3>
+
+    <table class="table" *ngFor="let order of orders; let i = index">
+
+        <thead>
+            <tr>
+                <th scope="col">ORDER</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">PRICE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{i+1}}</th>
+            </tr>
+            <tr *ngFor="let productCounter of orders[i].cart">
+                <th scope="row"></th>
+                <td>{{productCounter.product!.title}}</td>
+                <td>{{productCounter.quantity}}</td>
+                <td>{{productCounter.product!.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="loggedIn && loggedIn.role == 'admin' && orders.length > 0">
+
+    <p>COMANDES DE TOTS ELS USUARIS</p>
+
+    <table class="table" *ngFor="let order of orders; let i = index">
+        <thead>
+            <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">ORDER</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">PRICE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{order.user.firstName +" "+ order.user.lastName }}</th>
+                <th scope="row">{{i+1}}</th>
+            </tr>
+            <tr *ngFor="let productCounter of orders[i].cart">
+                <th scope="row"></th>
+                <th scope="row"></th>
+                <td>{{productCounter.product!.title}}</td>
+                <td>{{productCounter.quantity}}</td>
+                <td>{{productCounter.product!.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf=" loggedIn && loggedIn.role == 'admin' && orders.length == 0">
+    <h2>NO HI HA COMANDES PER MOSTRAR</h2>
+</div>

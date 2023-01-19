@@ -66,8 +66,15 @@ export class UsersService {
       this.usersStored = [];
     }
 
-    if(!user.id){
-      user.id = this.getNextId();
+    if(!user.id && this.usersStored == null ||
+      this.usersStored == undefined || this.usersStored.length == 0){
+      console.log("primer: " + user.id);
+      console.log(this.usersStored);
+      user.id = 1;
+    }else{
+      console.log("no primer: " + user.id);
+      console.log(this.usersStored);
+       user.id = this.getNextId();
     }
 
     this.usersStored.push(user);

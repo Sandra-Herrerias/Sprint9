@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit {
         id: 1,
         username: 'admin@admin.com',
         password: '123456',
-        firstName: 'adminName',
+        firstName: 'admin',
+        lastName:'admin',
         role: 'admin'
       };
 
