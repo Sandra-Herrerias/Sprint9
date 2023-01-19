@@ -21,6 +21,7 @@ import { AddProductFormComponent } from './components/add-product-form/add-produ
 import { ProfileComponent } from './components/profile/profile.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminCategoriesSectionComponent } from './components/admin-categories-section/admin-categories-section.component';
+import { CategoryFormComponent } from './components/category-form/category-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AdminCategoriesSectionComponent } from './components/admin-categories-s
     AddProductFormComponent,
     ProfileComponent,
     CartComponent,
-    AdminCategoriesSectionComponent
+    AdminCategoriesSectionComponent,
+    CategoryFormComponent
   ],
   imports: [
     BrowserModule,

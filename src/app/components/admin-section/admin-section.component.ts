@@ -23,7 +23,6 @@ export class AdminSectionComponent implements OnInit {
     this.listProducts();
   }
 
-
   showAddProduct(){
     this.addProduct = true;
   }

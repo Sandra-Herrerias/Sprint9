@@ -19,9 +19,16 @@ export class CategoriesService {
   }
 
   /**
-   * Get all products by category
+   * Get all categories
    */
   getProdByCategory(catId:string){
     return this.http.get( `https://api.escuelajs.co/api/v1/categories/${catId}/products`);
+  }
+
+  modifyCategory(info: any) {
+    let catId = info.id;
+    return this.http.put(`https://api.escuelajs.co/api/v1/categories/${catId}`,
+      info,
+      { responseType: "json" });
   }
 }

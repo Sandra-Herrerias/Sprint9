@@ -31,7 +31,6 @@ export class ProductFormComponent implements OnInit {
       description: this.productInForm.description,
       category: this.productInForm.category.name
     });
-
   }
 
   get f() { return this.prodForm.controls; }
@@ -51,13 +50,13 @@ export class ProductFormComponent implements OnInit {
       this.prodService.modifyProduct(info).subscribe(
         (result: any) => {
           if (result) { //success message
-            alert("Comentario modificado correctamente");
+            alert("Producto modificado correctamente");
           } else {//error message
-            alert("El comentario no se ha podido modificar");
+            alert("El producto no se ha podido modificar");
           }
         });
     } else {//error message
-      alert("El comentario no puede estar vacío");
+      alert("El producto no puede estar vacío");
     }
   }
 
