@@ -11,7 +11,7 @@ export class CategoryFormComponent implements OnInit {
 
   @Input() categoryInForm!: any;
   @Output() goToCategoriesList = new EventEmitter<boolean>();
-
+  
   catForm!: FormGroup;
   showCatForm: boolean = false;
 

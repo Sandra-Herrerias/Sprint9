@@ -1,0 +1,33 @@
+<div class="container">
+    <form [formGroup]="addCatForm" (ngSubmit)="addNewCategory()">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" formControlName="name" id="name" class="form-control" required [ngClass]="{ 'is-invalid': f['name'].touched && f['name'].errors, 'is-valid': f['name'].valid }">
+                    <div *ngIf="f['name'].touched && f['name'].errors" class="invalid-feedback">
+                        <div *ngIf="f['name'].errors['required']">Name is required!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="text" formControlName="image" id="image" class="form-control" required [ngClass]="{ 'is-invalid': f['image'].touched && f['image'].errors, 'is-valid': f['image'].valid }">
+                    <div *ngIf="f['image'].touched && f['image'].errors" class="invalid-feedback">
+                        <div *ngIf="f['image'].errors['required']">Image is required!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> Register </button>
+                <button type="button" class="btn btn-primary" (click)="goBack()"> Back </button>
+            </div>
+        </div>
+    </form>
+</div>

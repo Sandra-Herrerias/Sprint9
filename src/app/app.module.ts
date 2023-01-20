@@ -22,6 +22,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminCategoriesSectionComponent } from './components/admin-categories-section/admin-categories-section.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { AddCategoryFormComponent } from './components/add-category-form/add-category-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     ProfileComponent,
     CartComponent,
     AdminCategoriesSectionComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    AddCategoryFormComponent
   ],
   imports: [
     BrowserModule,

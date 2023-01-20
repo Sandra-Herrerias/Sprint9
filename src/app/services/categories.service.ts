@@ -25,6 +25,14 @@ export class CategoriesService {
     return this.http.get( `https://api.escuelajs.co/api/v1/categories/${catId}/products`);
   }
 
+
+  addCategory(info: any) {
+    return this.http.post("https://api.escuelajs.co/api/v1/categories/",
+      info,
+      { responseType: "json" })
+    ;
+  }
+
   modifyCategory(info: any) {
     let catId = info.id;
     return this.http.put(`https://api.escuelajs.co/api/v1/categories/${catId}`,
