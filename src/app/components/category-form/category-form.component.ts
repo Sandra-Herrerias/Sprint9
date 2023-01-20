@@ -31,6 +31,7 @@ export class CategoryFormComponent implements OnInit {
 
   updateFormSubmit(value: any) {
     let info = {
+      "id": this.categoryInForm.id,
       "name": value.name,
       "image": value.image
     }
@@ -39,13 +40,13 @@ export class CategoryFormComponent implements OnInit {
       this.categoryService.modifyCategory(info).subscribe(
         (result: any) => {
           if (result) { //success message
-            alert("Categoría modificado correctamente");
+            alert("Categoría modificada correctamente");
           } else {//error message
-            alert("El categoría no se ha podido modificar");
+            alert("La categoría no se ha podido modificar");
           }
         });
     } else {//error message
-      alert("El categoría no puede estar vacío");
+      alert("La categoría no puede estar vacío");
     }
   }
 

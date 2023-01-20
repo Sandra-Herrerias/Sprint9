@@ -42,22 +42,25 @@ export class RegisterComponent implements OnInit {
     this.usersStored = this.userService.getUsersStored();
 
     // stop here if form is invalid
-    if (this.registerForm.valid &&
-      this.usersStored != null &&
-      this.usersStored != undefined) {//if valid form and localstorage filled
+    if(this.registerForm.valid){
+      if (this.usersStored != null &&
+        this.usersStored != undefined) {//if valid form and localstorage filled
 
-      existsUser = this.usersStored.find(user => {
-        let currentUser = user.username;
-        let formUser = this.registerForm.value.username;
-        return currentUser == formUser;
-      });//if found returns true
+        existsUser = this.usersStored.find(user => {
+          let currentUser = user.username;
+          let formUser = this.registerForm.value.username;
+          return currentUser == formUser;
+        });//if found returns true
 
-      if (existsUser) alert("Insert new username, this one already exists");
-      if (!existsUser) this.userService.register(this.registerForm.value);
-    } else if (this.registerForm.valid &&
-      this.usersStored == null ||
-      this.usersStored == undefined) {//if valid form and localstorage empty
-      this.userService.register(this.registerForm.value);
+        if (existsUser) 
+          alert("Insert new username, this one already exists");
+        else 
+          this.userService.register(this.registerForm.value);
+
+      } else {//if valid form and localstorage empty
+        this.userService.register(this.registerForm.value);
+      }
+      this.userService.login(this.registerForm.value);
     }
   }
 }

@@ -41,6 +41,7 @@ export class AdminCategoriesSectionComponent implements OnInit {
 
   updatecategory(category: Category) {
     this.catSelected = category;
+    console.log(this.catSelected);
     this.showForm = true;
     return this.catSelected;
   }

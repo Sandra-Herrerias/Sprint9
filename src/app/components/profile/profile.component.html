@@ -1,4 +1,4 @@
-<div *ngIf="loggedIn && loggedIn.role == 'client'" class="nav-item">
+<div *ngIf="loggedIn && loggedIn.role == 'client' && orders.length > 0" class="nav-item">
 
     <h3>COMANDES CLIENT: {{loggedIn.firstName | uppercase}} {{loggedIn.lastName | uppercase}}</h3>
 
@@ -54,6 +54,6 @@
         </tbody>
     </table>
 </div>
-<div *ngIf=" loggedIn && loggedIn.role == 'admin' && orders.length == 0">
+<div *ngIf=" loggedIn && orders.length == 0">
     <h2>NO HI HA COMANDES PER MOSTRAR</h2>
 </div>
