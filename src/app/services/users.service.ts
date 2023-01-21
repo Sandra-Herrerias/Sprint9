@@ -52,7 +52,7 @@ export class UsersService {
     localStorage.removeItem("currentUser");
     this.userSubject.next(JSON.parse(null!));
 
-    this.route.navigate(['/home'])
+    this.route.navigate(['/products'])
       .then(() => {
         window.location.reload();
       });

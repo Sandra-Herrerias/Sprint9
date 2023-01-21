@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { HomeComponent } from './components/home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,7 +28,6 @@ import { AddCategoryFormComponent } from './components/add-category-form/add-cat
     AppComponent,
     NavBarComponent,
     CategoriesComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
     FooterComponent,
