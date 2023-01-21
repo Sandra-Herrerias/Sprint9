@@ -48,7 +48,7 @@ export class AddCategoryFormComponent implements OnInit{
         }
       );
     } else {//error message
-      alert("La categoria no puede estar vacío");
+      alert("La categoria no puede estar vacía");
     }
   }
 
