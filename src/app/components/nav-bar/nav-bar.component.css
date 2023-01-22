@@ -30,7 +30,7 @@ i,
 a:hover span,
 a:hover {
     color: black;
-    text-decoration-color: black;
+    text-decoration-color: none;
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 10px;
@@ -39,12 +39,12 @@ a:hover {
 
 a {
     color: black;
-    text-decoration-color: black;
+    text-decoration-color: none;
     text-decoration-line: none;
 }
 
 li:hover {
-    text-decoration-color: black;
+    text-decoration-color: none;
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 10px;
