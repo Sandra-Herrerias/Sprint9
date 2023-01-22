@@ -32,7 +32,6 @@ export class NavBarComponent implements OnInit{
      });
      this.cartProdsService.getTotalProductsObservable().subscribe(
        (totalProducts: number) => {
-         console.log("HE DE POSSAR EL TOTAL DE PRODUCTES QUE OBTINC AQUÍ EN EL CARRET DE LA NAVBAR EN UN NUMERO");
         }
      );
     }
@@ -47,5 +46,13 @@ export class NavBarComponent implements OnInit{
 
     goToCart() {
       this.router.navigate(['/cart']);
+    }
+
+    getTotalProductsCart(){
+      let totalProd = 0;
+      for(let i = 0; i < this.cartProdsService.getCart().length; i++){
+        totalProd += this.cartProdsService.getCart()[i].quantity;
+      }
+      return totalProd;
     }
 }
