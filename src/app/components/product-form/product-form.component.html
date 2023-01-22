@@ -34,23 +34,6 @@
                 </div>
             </div>
         </div>
-        {{this.category}}
-        <div class="row">
-            <div>
-                <div class="form-group">
-                    <label for="category" class="gradient-text fw-bold">CATEGORY</label>
-                    <select class="form-select" formControlName="category" id="category" placeholder="Enter category" required [ngClass]="{ 'is-invalid': f['category'].touched && f['category'].errors, 'is-valid': f['category'].valid }">
-             <option value="">Select your option</option>
-             <option *ngFor="let category of this.categories" [ngValue]="category">
-               {{category.name}}  
-             </option>
-           </select>
-                    <div *ngIf="f['category'].touched && f['category'].errors" class="invalid-feedback">
-                        <div *ngIf="f['category'].errors['required']">Category is required!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="form-group">
