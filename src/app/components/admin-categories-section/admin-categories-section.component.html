@@ -1,13 +1,14 @@
-<button class="btn btn-danger" (click)="showAddCategory()"><i class="fa-solid fa-plus"></i></button>
-
-<div *ngIf="categories && !showForm && !addCategory">
+<div *ngIf="!addCategory">
+    <button class="custom-btn btn-6" (click)="showAddCategory()"><span class="text">ADD</span></button>
+</div>
+<div *ngIf="categories && !showForm && !addCategory" class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">NAME</th>
-                <th scope="col">IMAGE</th>
-                <th scope="col">UPDATE</th>
+                <th scope="col" class="gradient-text">ID</th>
+                <th scope="col" class="gradient-text">NAME</th>
+                <th scope="col" class="gradient-text">IMAGE</th>
+                <th scope="col" class="gradient-text">UPDATE</th>
             </tr>
         </thead>
         <tbody *ngFor="let category of categories;let i=index">
@@ -15,7 +16,8 @@
                 <th scope="row">{{category.id}}</th>
                 <td>{{category.name}}</td>
                 <td>{{category.image}}</td>
-                <td><button class="btn btn-success" (click)="updatecategory(category)"><i class="fa-solid fa-pen-to-square"></i></button></td>
+                <td><button class="btn" (click)="updatecategory(category)"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
             </tr>
         </tbody>
     </table>

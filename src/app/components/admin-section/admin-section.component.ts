@@ -66,7 +66,7 @@ export class AdminSectionComponent implements OnInit {
    * @param event product to delete
    */
   confirmDelete(event: any){
-    if (confirm("¿Está segura de eliminar este producto?")) {
+    if (confirm("This product will be permanently removed")) {
 
       let info = {
         id: event.id,
@@ -76,9 +76,9 @@ export class AdminSectionComponent implements OnInit {
         (result: any) => {
           if (result) {
             this.deleteProdFromList(event);
-            alert("Comentario eliminado correctamente");
+            alert("Product deleted");
           } else {
-            alert("El comentario no se ha podido eliminar");
+            alert("Product cannot be deleted");
           }
         }
       );

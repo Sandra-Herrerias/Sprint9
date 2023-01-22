@@ -50,13 +50,14 @@ export class ProductFormComponent implements OnInit {
       this.prodService.modifyProduct(info).subscribe(
         (result: any) => {
           if (result) { //success message
-            alert("Producto modificado correctamente");
+            alert("Product modified");
+            this.goToProductsList.emit(this.showProdForm);
           } else {//error message
-            alert("El producto no se ha podido modificar");
+            alert("Product cannot be modified");
           }
         });
     } else {//error message
-      alert("El producto no puede estar vacío");
+      alert("Product cannot be empty");
     }
   }
 

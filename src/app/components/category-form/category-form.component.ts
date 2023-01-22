@@ -40,13 +40,14 @@ export class CategoryFormComponent implements OnInit {
       this.categoryService.modifyCategory(info).subscribe(
         (result: any) => {
           if (result) { //success message
-            alert("Categoría modificada correctamente");
+            alert("Category modified");
+            this.goToCategoriesList.emit(this.showCatForm);
           } else {//error message
-            alert("La categoría no se ha podido modificar");
+            alert("Category cannot be modified");
           }
         });
     } else {//error message
-      alert("La categoría no puede estar vacío");
+      alert("Category cannot be empty");
     }
   }
 

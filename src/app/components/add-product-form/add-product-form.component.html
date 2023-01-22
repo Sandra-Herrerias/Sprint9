@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container box my-5">
     <form [formGroup]="addProdForm" (ngSubmit)="addNewProduct()">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div>
                 <div class="form-group">
-                    <label for="title">Title:</label>
+                    <label for="title" class="gradient-text fw-bold">TITLE</label>
                     <input type="text" formControlName="title" id="title" class="form-control" required [ngClass]="{ 'is-invalid': f['title'].touched && f['title'].errors, 'is-valid': f['title'].valid }">
                     <div *ngIf="f['title'].touched && f['title'].errors" class="invalid-feedback">
                         <div *ngIf="f['title'].errors['required']">Title is required!</div>
@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div>
                 <div class="form-group">
-                    <label for="price">Price:</label>
+                    <label for="price" class="gradient-text fw-bold">PRICE</label>
                     <input type="text" formControlName="price" id="price" class="form-control" required [ngClass]="{ 'is-invalid': f['price'].touched && f['price'].errors, 'is-valid': f['price'].valid }">
                     <div *ngIf="f['price'].touched && f['price'].errors" class="invalid-feedback">
                         <div *ngIf="f['price'].errors['required']">Price is required!</div>
@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div>
                 <div class="form-group">
-                    <label for="description">Description:</label>
+                    <label for="description" class="gradient-text fw-bold">DESCRIPTION</label>
                     <textarea rows="8" type="text" formControlName="description" id="description" class="form-control" required [ngClass]="{ 'is-invalid': f['description'].touched && f['description'].errors, 'is-valid': f['description'].valid }"></textarea>
                     <div *ngIf="f['description'].touched && f['description'].errors" class="invalid-feedback">
                         <div *ngIf="f['description'].errors['required']">Description is required!</div>
@@ -36,16 +36,16 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div>
                 <div class="form-group">
-                    <label for="category">Category:</label>
+                    <label for="category" class="gradient-text fw-bold">CATEGORY</label>
                     <select class="form-select" formControlName="category" id="category" placeholder="Enter category" required [ngClass]="{ 'is-invalid': f['category'].touched && f['category'].errors, 'is-valid': f['category'].valid }">
-             <option value="">Select your option</option>
-             <option *ngFor="let category of this.categories" [ngValue]="category">
-               {{category.name}}
-            
-             </option>
-           </select>
+            <option value="">Select your option</option>
+            <option *ngFor="let category of this.categories" [ngValue]="category">
+              {{category.name}}
+
+            </option>
+          </select>
                     <div *ngIf="f['category'].touched && f['category'].errors" class="invalid-feedback">
                         <div *ngIf="f['category'].errors['required']">Category is required!</div>
                     </div>
@@ -53,10 +53,10 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary"> Register </button>
-                <button type="button" class="btn btn-primary" (click)="goBack()"> Back </button>
+        <div class="row center">
+            <div class="form-group ">
+                <button type="submit" class="btn custom-btn btn-6" [disabled]="!addProdForm.valid"> REGISTER </button>
+                <a type="button" class="card-link aStyle" (click)="goBack()">BACK</a>
             </div>
         </div>
     </form>

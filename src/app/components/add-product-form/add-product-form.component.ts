@@ -23,7 +23,6 @@ export class AddProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.addProdForm = this.formBuilder.group({
-      id: ['', [Validators.required]],
       title: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       description: ['', [Validators.required]],
@@ -48,14 +47,15 @@ export class AddProductFormComponent implements OnInit {
       this.prodService.addProduct(info).subscribe(
         (result: any) => {
           if (result) {//success message
-            alert("Producto insertado correctamente");
+            alert("Product inserted");
+            this.goToProductsList.emit(this.showAddProdForm);
           } else {//error message
-            alert("El producto no se ha podido añadir");
+            alert("Product couldn't be added");
           }
         }
       );
     } else {//error message
-      alert("El producto no puede estar vacío");
+      alert("Product cannot be empty");
     }
   }
 

@@ -1,15 +1,15 @@
-<div *ngIf="loggedIn && loggedIn.role == 'client' && orders.length > 0" class="nav-item">
+<div *ngIf="loggedIn && loggedIn.role == 'client' && orders.length > 0" class="nav-item table-responsive">
 
-    <h3>COMANDES CLIENT: {{loggedIn.firstName | uppercase}} {{loggedIn.lastName | uppercase}}</h3>
+    <h3 class="textCenter gradient-text fw-bold my-4">COMANDES CLIENT: {{loggedIn.firstName | uppercase}} {{loggedIn.lastName | uppercase}}</h3>
 
     <table class="table" *ngFor="let order of orders; let i = index">
 
         <thead>
             <tr>
-                <th scope="col">ORDER</th>
-                <th scope="col">TITLE</th>
-                <th scope="col">QUANTITY</th>
-                <th scope="col">PRICE</th>
+                <th scope="col" class="gradient-text">ORDER</th>
+                <th scope="col" class="gradient-text">TITLE</th>
+                <th scope="col" class="gradient-text">QUANTITY</th>
+                <th scope="col" class="gradient-text">PRICE</th>
             </tr>
         </thead>
         <tbody>
@@ -27,16 +27,16 @@
 </div>
 <div *ngIf="loggedIn && loggedIn.role == 'admin' && orders.length > 0">
 
-    <p>COMANDES DE TOTS ELS USUARIS</p>
+    <h3 class="textCenter gradient-text fw-bold my-4">COMANDES DE TOTS ELS USUARIS</h3>
 
     <table class="table" *ngFor="let order of orders; let i = index">
         <thead>
             <tr>
-                <th scope="col">NAME</th>
-                <th scope="col">ORDER</th>
-                <th scope="col">TITLE</th>
-                <th scope="col">QUANTITY</th>
-                <th scope="col">PRICE</th>
+                <th scope="col" class="gradient-text">NAME</th>
+                <th scope="col" class="gradient-text">ORDER</th>
+                <th scope="col" class="gradient-text">TITLE</th>
+                <th scope="col" class="gradient-text">QUANTITY</th>
+                <th scope="col" class="gradient-text">PRICE</th>
             </tr>
         </thead>
         <tbody>
@@ -55,5 +55,5 @@
     </table>
 </div>
 <div *ngIf=" loggedIn && orders.length == 0">
-    <h2>NO HI HA COMANDES PER MOSTRAR</h2>
+    <h3 class="textCenter gradient-text fw-bold my-4">NO HI HA COMANDES PER MOSTRAR</h3>
 </div>

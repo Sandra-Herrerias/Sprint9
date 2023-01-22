@@ -41,14 +41,15 @@ export class AddCategoryFormComponent implements OnInit{
       this.categoryService.addCategory(info).subscribe(
         (result: any) => {
           if (result) {//success message
-            alert("Categoria insertada correctamente");
+            alert("Category inserted");
+            this.goToCategoriesList.emit(this.showAddCatForm);
           } else {//error message
-            alert("La categoria no se ha podido añadir");
+            alert("Category couldn't be added");
           }
         }
       );
     } else {//error message
-      alert("La categoria no puede estar vacía");
+      alert("Category cannot be empty");
     }
   }
 

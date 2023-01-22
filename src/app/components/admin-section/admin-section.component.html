@@ -1,17 +1,18 @@
-<button class="btn btn-danger" (click)="showAddProduct()"><i class="fa-solid fa-plus"></i></button>
-
-<div *ngIf="products && !showForm && !addProduct">
+<div *ngIf="!addProduct">
+    <button class="custom-btn btn-6" (click)="showAddProduct()"><span class="text">ADD</span></button>
+</div>
+<div *ngIf="products && !showForm && !addProduct" class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">price</th>
-                <th scope="col">description</th>
-                <th scope="col">category</th>
-                <th scope="col">images</th>
-                <th scope="col">update</th>
-                <th scope="col">delete</th>
+                <th scope="col"></th>
+                <th scope="col" class="gradient-text">TITLE</th>
+                <th scope="col" class="gradient-text">PRICE</th>
+                <th scope="col" class="gradient-text">DESCRIPTION</th>
+                <th scope="col" class="gradient-text">CATEGORY</th>
+                <th scope="col" class="gradient-text">IMAGES</th>
+                <th scope="col" class="gradient-text">UPDATE</th>
+                <th scope="col" class="gradient-text">DELETE</th>
             </tr>
         </thead>
         <tbody *ngFor="let product of products;let i=index">
@@ -22,8 +23,9 @@
                 <td>{{product.description}}</td>
                 <td>{{product.category.name}}</td>
                 <td>{{product.images}}</td>
-                <td><button class="btn btn-success" (click)="updateProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button></td>
-                <td><button class="btn btn-danger" (click)="confirmDelete(product)"><i class="fa-solid fa-trash-can"></i></button></td>
+                <td><button class="btn " (click)="updateProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+                <td><button class="btn " (click)="confirmDelete(product)"><i class="fa-solid fa-trash-can"></i></button></td>
             </tr>
         </tbody>
     </table>

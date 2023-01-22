@@ -1,12 +1,12 @@
 <div class="container d-flex 
-justify-content-center">
+justify-content-center table-responsive">
     <table class="table" *ngIf="cart">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
+                <th scope="col" class="gradient-text">ID</th>
+                <th scope="col" class="gradient-text">NAME</th>
+                <th scope="col" class="gradient-text">QUANTITY</th>
+                <th scope="col" class="gradient-text">PRICE</th>
             </tr>
         </thead>
         <tbody *ngFor="let productCounter of cart; let i = index">
