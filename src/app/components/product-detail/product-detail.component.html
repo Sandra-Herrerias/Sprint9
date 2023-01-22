@@ -1,9 +1,17 @@
-<div *ngIf="productDetails" class="card text-dark bg-* center">
-    <img src="{{productDetails.images[0]}} " class="card-img-top" alt="imgProduct ">
-    <div class="card-body ">
-        <h5 class="card-title">{{productDetails.title}}</h5>
-        <p class="card-text">{{productDetails.description}}</p>
-        <button class="custom-btn btn-6" (click)="addToCart()">ADD TO CART</button>
-        <p class="card-text">{{productDetails.price}} €</p>
+<div *ngIf="productDetails" class="row justify-content-center m-5">
+    <div class="container centered mb-5">
+        <section class="cards">
+            <div class="card text-dark bg-* justify-content-center">
+                <img src="{{productDetails.images[0]}} " class="card-img-top" alt="imgProduct ">
+                <div class="card-body">
+                    <h5 class="card-title">{{productDetails.title}}</h5>
+                    <p class="card-text">{{productDetails.description}}</p>
+                    <div class=" col text-center">
+                        <button class="custom-btn btn-6" (click)="addToCart()">ADD TO CART</button>
+                        <a class="aStyle">{{productDetails.price}} €</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
