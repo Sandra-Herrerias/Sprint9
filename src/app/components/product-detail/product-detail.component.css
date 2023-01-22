@@ -1,0 +1,12 @@
+.card {
+    max-width: 50%;
+}
+
+.center {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: flex-end;
+    align-items: center;
+}
