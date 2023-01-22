@@ -22,8 +22,7 @@ export class AddCategoryFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.addCatForm = this.formBuilder.group({
-      name:  ['', [Validators.required]],
-      image:  ['', [Validators.required]]
+      name:  ['', [Validators.required]]
     });
   }
 
@@ -32,16 +31,17 @@ export class AddCategoryFormComponent implements OnInit{
 
   addNewCategory() {
     let info = {
-      "name": this.addCatForm.value.name,
-      "image": this.addCatForm.value.image
+      name: this.addCatForm.value.name,
+      image: "https://placeimg.com/640/480/any"
     }
 
     this.newCategory = info;
+    console.log(this.newCategory);
     if (this.newCategory) {
       this.categoryService.addCategory(info).subscribe(
         (result: any) => {
           if (result) {//success message
-            alert("Categoria insertado correctamente");
+            alert("Categoria insertada correctamente");
           } else {//error message
             alert("La categoria no se ha podido añadir");
           }

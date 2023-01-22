@@ -45,6 +45,8 @@ export class ProfileComponent implements OnInit {
       if (this.loggedIn!.role == 'admin') {
         this.orders = this.orderService.getAllOrders();
       }
+    }else{
+      this.router.navigate(['/products']);
     }
   }
 }
