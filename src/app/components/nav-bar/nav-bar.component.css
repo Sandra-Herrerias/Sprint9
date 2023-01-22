@@ -8,7 +8,10 @@ i,
     color: black;
 }
 
-.badge:hover {
+.badge:hover,
+.navbar-nav li a:hover,
+.navbar-nav li a:focus,
+.navbar-nav li a:active {
     /* Fallback: Set a background color. */
     background-color: transparent;
     /* Create the gradient. */
