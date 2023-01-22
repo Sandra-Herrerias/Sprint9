@@ -1,6 +1,6 @@
 <div *ngIf="loggedIn && loggedIn.role == 'client' && orders.length > 0" class="nav-item table-responsive">
 
-    <h3 class="textCenter gradient-text fw-bold my-4">COMANDES CLIENT: {{loggedIn.firstName | uppercase}} {{loggedIn.lastName | uppercase}}</h3>
+    <h3 class="textCenter gradient-text fw-bold my-4">USER: {{loggedIn.firstName | uppercase}} {{loggedIn.lastName | uppercase}}</h3>
 
     <table class="table" *ngFor="let order of orders; let i = index">
 
@@ -27,7 +27,7 @@
 </div>
 <div *ngIf="loggedIn && loggedIn.role == 'admin' && orders.length > 0">
 
-    <h3 class="textCenter gradient-text fw-bold my-4">COMANDES DE TOTS ELS USUARIS</h3>
+    <h3 class="textCenter gradient-text fw-bold my-4">ORDERS FROM USERS</h3>
 
     <table class="table" *ngFor="let order of orders; let i = index">
         <thead>
@@ -55,5 +55,5 @@
     </table>
 </div>
 <div *ngIf=" loggedIn && orders.length == 0">
-    <h3 class="textCenter gradient-text fw-bold my-4">NO HI HA COMANDES PER MOSTRAR</h3>
+    <h3 class="textCenter gradient-text fw-bold my-4">NO ORDERS TO SHOW</h3>
 </div>
