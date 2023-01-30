@@ -1,4 +1,4 @@
-<div *ngIf="!addProduct">
+<div *ngIf="!addProduct && !showForm">
     <button class="custom-btn btn-6" (click)="showAddProduct()"><span class="text">ADD</span></button>
 </div>
 <div *ngIf="products && !showForm && !addProduct" class="table-responsive">

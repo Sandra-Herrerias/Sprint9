@@ -9,17 +9,23 @@ justify-content-center table-responsive">
                 <th scope="col" class="gradient-text">PRICE</th>
             </tr>
         </thead>
-        <tbody *ngFor="let productCounter of cart; let i = index">
-            <tr>
+        <tbody>
+            <tr *ngFor="let productCounter of cart; let i = index">
                 <th scope="row">{{productCounter.product?.id}}</th>
                 <td> {{productCounter.product?.title}}</td>
                 <td> <button (click)="removeProdCart(productCounter)" type="button" class="btn btn-secondary mx-3"><i
               class="fa-sharp fa-solid fa-minus"></i></button>{{productCounter.quantity}}<button (click)="addToCart(productCounter)" type="button" class="btn btn-secondary mx-3"><i
               class="fa-sharp fa-solid fa-plus"></i></button></td>
-                <td>{{productCounter.subtotal}}</td>
+                <td>{{productCounter.subtotal}} €</td>
+            </tr>
+
+            <tr>
+                <th>TOTAL </th>
+                <td></td>
+                <th class="text-center">{{getTotalProductsCart()}}</th>
+                <th>{{totalPrice}} €</th>
             </tr>
         </tbody>
-        <tr>TOTAL: {{totalPrice}}</tr>
         <div class="center">
             <button class="custom-btn btn-6" href="#">BUY</button>
             <a class="card-link aStyle" (click)="sendOrder()">SAVE ORDER</a>

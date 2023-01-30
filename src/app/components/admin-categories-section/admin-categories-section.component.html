@@ -1,4 +1,4 @@
-<div *ngIf="!addCategory">
+<div *ngIf="!addCategory && !showForm">
     <button class="custom-btn btn-6" (click)="showAddCategory()"><span class="text">ADD</span></button>
 </div>
 <div *ngIf="categories && !showForm && !addCategory" class="table-responsive">

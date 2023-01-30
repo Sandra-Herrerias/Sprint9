@@ -42,4 +42,12 @@ export class CartComponent implements OnInit {
       this.totalPrice = 0;
     }
   }
+
+  getTotalProductsCart(){
+    let totalProd = 0;
+    for(let i = 0; i < this.cartService.getCart().length; i++){
+      totalProd += this.cartService.getCart()[i].quantity;
+    }
+    return totalProd;
+  }
 }
