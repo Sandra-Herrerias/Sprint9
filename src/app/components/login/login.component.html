@@ -5,26 +5,26 @@
             <div class="form-group mb-3 row">
                 <label class="col-4 col-form-label" for="username">Username</label>
                 <div class="col-6">
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
-                </div>
-                <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-                    <div *ngIf="f['username'].errors['required']">Username is required</div>
+                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': f['username'].touched && f['username'].errors, 'is-valid': f['username'].valid}" />
+                    <div *ngIf="f['username'].touched && f['username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['username'].errors['required']">Username is required</div>
+                        <div *ngIf="f['username'].errors['email']">Insert a correct email</div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group mb-3 row mt-3">
-
+            <div class="form-group mb-3 row">
                 <label class="col-4 col-form-label" for="password">Password</label>
                 <div class="col-6">
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
-                </div>
-                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                    <div *ngIf="f['password'].errors['required']">Password is required</div>
-                </div>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': f['password'].touched && f['password'].errors, 'is-valid': f['password'].valid}" />
 
+                    <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Password is required</div>
+                    </div>
+                </div>
             </div>
             <div class="form-group mt-3">
-                <button [disabled]="!loginForm.valid" class="custom-btn btn-6 mx-3">CONTINUE</button>
-                <a [routerLink]="['/register']">REGISTER</a>
+                <button type="submit" [disabled]="!loginForm.valid" class="custom-btn btn-6 mx-3">CONTINUE</button>
+                <a type="button" [routerLink]="['/register']">REGISTER</a>
             </div>
         </form>
 
