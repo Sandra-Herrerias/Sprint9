@@ -29,8 +29,6 @@ export class CartService {
    */
   addProdToCart(product: Product) {
     var index: number = -1;
-
-    console.log(product);
     
     this.cartProducts.find((pc: ProductCounter, i: number) => {
       if (pc.product?.id == product.id) {

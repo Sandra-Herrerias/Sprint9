@@ -36,7 +36,6 @@ export class AddCategoryFormComponent implements OnInit{
     }
 
     this.newCategory = info;
-    console.log(this.newCategory);
     if (this.newCategory) {
       this.categoryService.addCategory(info).subscribe(
         (result: any) => {

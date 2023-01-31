@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
 
 
     if (this.loggedIn) {
-      console.log("Logged");
       if (this.loggedIn!.role == 'client') {
         this.orders = this.orderService.getOrdersByUser(this.loggedIn!);
       }

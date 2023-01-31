@@ -44,7 +44,6 @@ export class OrdersService {
     let ordersByUser : Array<Order> = [];
     for(let i = 0; i < orders.length; i++){
       if(orders[i].user.id == user.id){
-        console.log(JSON.stringify(orders[i]));
         ordersByUser.push(orders[i]);
       }
     }

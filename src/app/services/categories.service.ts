@@ -27,7 +27,6 @@ export class CategoriesService {
 
 
   addCategory(info: any) {
-    console.log("SERVICE: " + JSON.stringify(info));
     return this.http.post("https://api.escuelajs.co/api/v1/categories/",
       info,
       { responseType: "json" })
